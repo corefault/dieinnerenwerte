@@ -1,0 +1,57 @@
+/* 
+    Created on : 11.10.2014, 23:41:08
+    Author     : corefault
+*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif; }
+
+body {
+  margin: 80px auto;
+  width: 800px;
+  font-size: 13px; }
+
+header img {
+  width: 84px;
+  height: 84px;
+  border-radius: 42px;
+  float: left; }
+header aside {
+  float: left;
+  margin-left: 20px; }
+header h1 {
+  font-size: 32px;
+  font-weight: normal;
+  color: #000; }
+header span {
+  color: #a2a2a2;
+  display: block; }
+
+section {
+  clear: both;
+  padding-top: 30px; }
+  section div {
+    padding: 10px;
+    box-sizing: border-sizing;
+    -webkit-box-sizing: border-sizing;
+    -moz-box-sizing: border-sizing;
+    -o-box-sizing: border-sizing;
+    border: 1px solid #eee;
+    float: left;
+    width: 360px;
+    margin-right: 10px; }
+    section div img {
+      float: left;
+      margin-right: 20px; }
+    section div h1 {
+      font-size: 48px;
+      color: #dedede;
+      letter-spacing: -1px; }
+    section div h2 {
+      color: #777;
+      font-size: 20px;
+      font-weight: normal;
+      margin-top: -10px; }
+
+/*# sourceMappingURL=style.css.map */
