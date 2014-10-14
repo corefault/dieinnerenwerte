@@ -37,22 +37,19 @@ section {
     color: #888; }
   section h3:before {
     content: "Today is "; }
+  section canvas {
+    padding-top: 20px; }
   section div {
     padding: 10px;
-    box-sizing: border-sizing;
-    -webkit-box-sizing: border-sizing;
-    -moz-box-sizing: border-sizing;
-    -o-box-sizing: border-sizing;
-    border: 1px solid #eee;
+    background-color: #eee;
     float: left;
-    width: 360px;
-    margin-right: 10px; }
+    width: 380px; }
     section div img {
       float: left;
       margin-right: 20px; }
     section div h1 {
       font-size: 48px;
-      color: #dedede;
+      color: #999;
       letter-spacing: -1px; }
     section div h2 {
       color: #777;

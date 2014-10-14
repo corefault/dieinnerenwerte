@@ -29,7 +29,7 @@ var dataprovider = (function() {
                   };
               }
            });
-
+           
            _running = true;
            this.update();
         },
