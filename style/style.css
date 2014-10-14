@@ -41,6 +41,15 @@ section {
     padding-top: 20px; }
   section .alarm {
     background-color: #b00038; }
+  section article {
+    clear: both;
+    padding-top: 20px;
+    display: block;
+    width: 800px !important;
+    font-size: 11px;
+    color: #777;
+    height: 200px;
+    overflow-y: auto; }
   section div {
     padding: 10px;
     background-color: #eee;
@@ -48,7 +57,16 @@ section {
     width: 380px; }
     section div img {
       float: left;
-      margin-right: 20px; }
+      margin-right: 20px;
+      animation-name: fx;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      -webkit-animation-name: fx;
+      -webkit-animation-duration: 4s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-name: fx;
+      -moz-animation-duration: 4s;
+      -moz-animation-iteration-count: infinite; }
     section div h1 {
       font-size: 48px;
       color: #999;
@@ -58,5 +76,20 @@ section {
       font-size: 20px;
       font-weight: normal;
       margin-top: -10px; }
+
+@keyframes fx {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+
+  50% {
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4); } }
 
 /*# sourceMappingURL=style.css.map */

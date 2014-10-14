@@ -30,6 +30,8 @@ var dataprovider = (function() {
               }
            });
            
+           controller.trace("Started monitoring...");
+           
            _running = true;
            this.update();
         },
@@ -39,6 +41,7 @@ var dataprovider = (function() {
          */
         stopMonitoring: function() {
            _running = false;
+           controller.trace("Stopped monitoring...");
         },
 
         /**
@@ -53,6 +56,7 @@ var dataprovider = (function() {
                        controller.updateHeart(data.pulse);
                    },
                    error: function(){
+                      _running = false;
                        console.log("ouch");
                    }
                });

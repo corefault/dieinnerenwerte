@@ -22,6 +22,14 @@ var alarms = (function() {
        */
       evaluatePulse: function(val) {
           return (val <= this.pulse.low || val >= this.pulse.upper);
+      },
+      
+      /**
+       * play sound via html5
+       */
+      audio: function() {
+         var snd = new Audio('media/alarm.wav');
+         snd.play();
       }
       
     };

@@ -64,6 +64,17 @@ section {
        background-color:#b00038;
    }
    
+   article {
+      clear: both;
+      padding-top:20px;
+      display:block;
+      width:$width !important;
+      font-size:11px;
+      color:#777;
+      height:200px;
+      overflow-y:auto;
+   }
+   
    div {
       padding:10px;
       background-color:#eee;
@@ -73,6 +84,16 @@ section {
       img {
          float:left;
          margin-right:20px;
+         
+         animation-name: fx;
+         animation-duration: 4s;
+         animation-iteration-count: infinite;
+         -webkit-animation-name: fx;
+         -webkit-animation-duration: 4s;
+         -webkit-animation-iteration-count: infinite;
+         -moz-animation-name: fx;
+         -moz-animation-duration: 4s;
+         -moz-animation-iteration-count: infinite;
       }
       
       h1 {
@@ -89,4 +110,20 @@ section {
    }
 }
 
+@keyframes fx {
+    0%, 100% {
+       -webkit-transform: scale(1.0);
+       -moz-transform: scale(1.0);
+       -ms-transform: scale(1.0);
+       -o-transform: scale(1.0);
+       transform: scale(1.0);
+    }
 
+    50% {
+       -webkit-transform: scale(1.4);
+       -moz-transform: scale(1.4);
+       -ms-transform: scale(1.4);
+       -o-transform: scale(1.4);
+       transform: scale(1.4);
+    }
+ }

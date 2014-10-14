@@ -34,6 +34,8 @@ var controller = (function() {
            
            if (alarms.evaluateOxygen(val)) {
                $('#spo').addClass('alarm');
+               alarms.audio();
+               this.trace("Oxygen alarm reported. The value {" + val + "} below the allowed limit of {" + alarms.oxygen.low + "}");
            } else {
                $('#spo').removeClass('alarm');
            }
@@ -47,9 +49,29 @@ var controller = (function() {
            _valsPulse.append(new Date().getTime(), val);
            if (alarms.evaluatePulse(val)) {
                $('#heart').addClass('alarm');
+               alarms.audio();
+               this.trace("Pulse alarm reported. The value {" + val + "} was out of allowed range {" + alarms.pulse.low + "} and {" + alarms.pulse.upper + "}.");
            } else {
                $('#heart').removeClass('alarm');
            }
+        },
+        
+        /**
+         * put trace information into article area
+         */
+        trace: function(msg) {
+           var now = new Date();
+           
+           msg = msg.replace(/{/g,"<strong>");
+           msg = msg.replace(/}/g,"</strong>");
+           
+           $('article').prepend("<strong>"
+                                + now.toLocaleDateString()
+                                + " "
+                                + now.toLocaleTimeString()
+                                + "</strong> "
+                                + msg
+                                + "<br/>"); 
         },
 
         /**
