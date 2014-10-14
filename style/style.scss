@@ -47,6 +47,15 @@ section {
    clear:both;
    padding-top:30px;
    
+   h3 {
+       font-size:18px;
+       font-weight:light;
+       color:#888;
+   }
+   h3:before {
+       content: "Today is ";
+   }
+   
    div {
       padding:10px;
       box-sizing:border-sizing;

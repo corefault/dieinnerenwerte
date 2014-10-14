@@ -1,4 +1,4 @@
-# pulswatch
+# pulsewatch
 
 this is a concept for the dataport of the pulsoxymeter n-560. the data should be read in realtime from the dataport which uses the rs232 protocol.
 
@@ -15,4 +15,13 @@ the data read is organized for better handling in client applications. the pi bo
 ## lowlevel reading
 
 the lowlevel reading could be done using the commandline and bash scripts. maybe a little c program must be written for better handling and reorganization of data.
+
+## web application 
+the web aplication is used for visualization of the data. in a user configurable interval the data is read from the lowlevel system.
+
+the UI provides the following data
+
+* beats per minute
+* oxygen value
+* visualization of the data in a live chart
 
