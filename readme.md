@@ -25,3 +25,14 @@ the UI provides the following data
 * oxygen value
 * visualization of the data in a live chart
 
+## alarmsystem
+
+the application can define ranges for an alarm to inform the user.
+
+if a value is out of bounds an alarm is displayed in red and a sound will inform the user.
+
+additionally each alarm is logged in a separate area.
+
+## video monitoring
+
+tbd

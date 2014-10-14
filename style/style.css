@@ -39,6 +39,8 @@ section {
     content: "Today is "; }
   section canvas {
     padding-top: 20px; }
+  section .alarm {
+    background-color: #b00038; }
   section div {
     padding: 10px;
     background-color: #eee;

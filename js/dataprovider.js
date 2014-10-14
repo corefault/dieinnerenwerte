@@ -2,7 +2,7 @@ var dataprovider = (function() {
    var _url = "getdata",
        _delay = 4000,
        _running = false;
-   
+       
    return {
        /**
         * generate random value in range

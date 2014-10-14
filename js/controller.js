@@ -2,7 +2,6 @@ var controller = (function() {
     var _valsOxygen, _valsPulse;
     
     return {
-      
         /**
          * provide common data.
          */
@@ -32,6 +31,12 @@ var controller = (function() {
         updateOxygen: function(val) {
            $('#spo h1').html(val);
            _valsOxygen.append(new Date().getTime(), val);
+           
+           if (alarms.evaluateOxygen(val)) {
+               $('#spo').addClass('alarm');
+           } else {
+               $('#spo').removeClass('alarm');
+           }
         },
         /**
          * update beats per minute.
@@ -40,6 +45,11 @@ var controller = (function() {
         updateHeart:function(val) {
            $('#heart h1').html(val);
            _valsPulse.append(new Date().getTime(), val);
+           if (alarms.evaluatePulse(val)) {
+               $('#heart').addClass('alarm');
+           } else {
+               $('#heart').removeClass('alarm');
+           }
         },
 
         /**
