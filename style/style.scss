@@ -5,6 +5,7 @@
 
 $width: 800px;
 $margin:10px;
+$animationsettings: animationFrames ease-in-out 4s;
 
 * {
    margin:0;
@@ -46,6 +47,9 @@ header {
 section {
    clear:both;
    padding-top:30px;
+   
+   
+   
    
    h3 {
        font-size:18px;
@@ -96,16 +100,6 @@ section {
       img {
          float:left;
          margin-right:20px;
-         
-         animation-name: fx;
-         animation-duration: 4s;
-         animation-iteration-count: infinite;
-         -webkit-animation-name: fx;
-         -webkit-animation-duration: 4s;
-         -webkit-animation-iteration-count: infinite;
-         -moz-animation-name: fx;
-         -moz-animation-duration: 4s;
-         -moz-animation-iteration-count: infinite;
       }
       
       h1 {
@@ -135,20 +129,62 @@ article {
     overflow-y:auto;
 }
 
-@keyframes fx {
-    0%, 100% {
-       -webkit-transform: scale(1.0);
-       -moz-transform: scale(1.0);
-       -ms-transform: scale(1.0);
-       -o-transform: scale(1.0);
-       transform: scale(1.0);
-    }
+.element-animation{
+  animation: $animationsettings;
+  -webkit-animation: $animationsettings;
+  -moz-animation: $animationsettings;
+  -o-animation: $animationsettings;
+  -ms-animation: $animationsettings;
 
-    50% {
-       -webkit-transform: scale(1.4);
-       -moz-transform: scale(1.4);
-       -ms-transform: scale(1.4);
-       -o-transform: scale(1.4);
-       transform: scale(1.4);
-    }
- }
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+}
+
+@keyframes animationFrames{
+  0%, 100% {
+    transform:  scaleX(0.8) scaleY(0.8) ;
+  }
+  50% {
+    transform:  scaleX(1.20) scaleY(1.20) ;
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0%,100% {
+    -moz-transform:  scaleX(0.8) scaleY(0.8) ;
+  }
+  50% {
+    -moz-transform:  scaleX(1.20) scaleY(1.20) ;
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0%,100% {
+    -webkit-transform:  scaleX(0.8) scaleY(0.8) ;
+  }
+  50% {
+    -webkit-transform:  scaleX(1.20) scaleY(1.20) ;
+  }
+}
+
+@-o-keyframes animationFrames {
+  0%,100% {
+    -o-transform:  scaleX(0.8) scaleY(0.8) ;
+  }
+  50% {
+    -o-transform:  scaleX(1.20) scaleY(1.20) ;
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0%,100% {
+    -ms-transform:  scaleX(0.8) scaleY(0.8) ;
+  }
+  50% {
+    -ms-transform:  scaleX(1.20) scaleY(1.20) ;
+  }
+}
+

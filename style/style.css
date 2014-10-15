@@ -67,16 +67,7 @@ section {
     position: relative; }
     section .cell img {
       float: left;
-      margin-right: 20px;
-      animation-name: fx;
-      animation-duration: 4s;
-      animation-iteration-count: infinite;
-      -webkit-animation-name: fx;
-      -webkit-animation-duration: 4s;
-      -webkit-animation-iteration-count: infinite;
-      -moz-animation-name: fx;
-      -moz-animation-duration: 4s;
-      -moz-animation-iteration-count: infinite; }
+      margin-right: 20px; }
     section .cell h1 {
       font-size: 48px;
       color: #999;
@@ -99,18 +90,42 @@ article {
   color: #777;
   overflow-y: auto; }
 
-@keyframes fx {
+.element-animation {
+  animation: animationFrames ease-in-out 4s;
+  -webkit-animation: animationFrames ease-in-out 4s;
+  -moz-animation: animationFrames ease-in-out 4s;
+  -o-animation: animationFrames ease-in-out 4s;
+  -ms-animation: animationFrames ease-in-out 4s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite; }
+
+@keyframes animationFrames {
   0%, 100% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1); }
+    transform: scaleX(0.8) scaleY(0.8); }
   50% {
-    -webkit-transform: scale(1.4);
-    -moz-transform: scale(1.4);
-    -ms-transform: scale(1.4);
-    -o-transform: scale(1.4);
-    transform: scale(1.4); } }
+    transform: scaleX(1.2) scaleY(1.2); } }
+@-moz-keyframes animationFrames {
+  0%,100% {
+    -moz-transform: scaleX(0.8) scaleY(0.8); }
+  50% {
+    -moz-transform: scaleX(1.2) scaleY(1.2); } }
+@-webkit-keyframes animationFrames {
+  0%,100% {
+    -webkit-transform: scaleX(0.8) scaleY(0.8); }
+  50% {
+    -webkit-transform: scaleX(1.2) scaleY(1.2); } }
+@-o-keyframes animationFrames {
+  0%,100% {
+    -o-transform: scaleX(0.8) scaleY(0.8); }
+  50% {
+    -o-transform: scaleX(1.2) scaleY(1.2); } }
+@-ms-keyframes animationFrames {
+  0%,100% {
+    -ms-transform: scaleX(0.8) scaleY(0.8); }
+  50% {
+    -ms-transform: scaleX(1.2) scaleY(1.2); } }
 
 /*# sourceMappingURL=style.css.map */

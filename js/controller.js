@@ -33,6 +33,7 @@ var controller = (function() {
      
         /**
          * put trace information into article area
+         * @param {type} msg the message to display {} is enclosed in strong tag
          */
         trace: function(msg) {
            var now = new Date();
