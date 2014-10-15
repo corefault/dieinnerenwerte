@@ -51,6 +51,7 @@ section {
        font-size:18px;
        font-weight:light;
        color:#888;
+       padding-bottom:10px;
    }
    h3:before {
        content: "Today is ";
@@ -61,26 +62,31 @@ section {
    }
    
    .alarm {
+       background-color:#b00038 !important;
+   }
+      
+   .notify {
+       position:absolute;
+       right:10px;
+       top:10px;
+       width:32px;
+       height:32px;
+       border-radius: 16px;
        background-color:#b00038;
+       color:#fff;
+       font-size:12px;
+       text-align:center;
+       display:none;
    }
-   
-   article {
-      clear: both;
-      padding-top:20px;
-      display:block;
-      width:$width !important;
-      font-size:11px;
-      color:#777;
-      height:200px;
-      overflow-y:auto;
-   }
-   
-   div {
+
+   .cell {
+      border-right:2px solid #fff;
       padding:10px;
       background-color:#eee;
       float:left;
-      width: $width/2 - 20;
-      
+      width: $width/2 - 24;
+      position:relative;
+            
       img {
          float:left;
          margin-right:20px;
@@ -108,6 +114,19 @@ section {
          margin-top:-10px;
       }
    }
+}
+
+article {
+    background-color:#e8e8e8;
+    border-top:1px solid #c4c5c6;
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:150px;
+    width:100%;
+    font-size:11px;
+    color:#777;
+    overflow-y:auto;
 }
 
 @keyframes fx {

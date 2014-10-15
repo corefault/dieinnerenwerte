@@ -1,5 +1,7 @@
 var controller = (function() {
-    var _valsOxygen, _valsPulse;
+    var _valsOxygen, _valsPulse,
+        _alarmOxygen = 0,
+        _alarmPulse = 0;
     
     return {
         /**
@@ -35,6 +37,7 @@ var controller = (function() {
            if (alarms.evaluateOxygen(val)) {
                $('#spo').addClass('alarm');
                alarms.audio();
+               this.notify(false);
                this.trace("Oxygen alarm reported. The value {" + val + "} below the allowed limit of {" + alarms.oxygen.low + "}");
            } else {
                $('#spo').removeClass('alarm');
@@ -50,10 +53,26 @@ var controller = (function() {
            if (alarms.evaluatePulse(val)) {
                $('#heart').addClass('alarm');
                alarms.audio();
+               this.notify(true);
                this.trace("Pulse alarm reported. The value {" + val + "} was out of allowed range {" + alarms.pulse.low + "} and {" + alarms.pulse.upper + "}.");
            } else {
                $('#heart').removeClass('alarm');
            }
+        },
+        /**
+         * notify user about alarms
+         * @param {type} isHeart hear or spo
+         */
+        notify: function(isHeart) {
+            if (isHeart) {
+                _alarmPulse++;
+                $('#heart .notify').html(_alarmPulse);
+                $('#heart .notify').show();
+            } else {
+                _alarmOxygen++;
+                $('#spo .notify').html(_alarmOxygen);
+                $('#spo .notify').show();
+            }
         },
         
         /**
@@ -78,16 +97,23 @@ var controller = (function() {
          * initialize plugins.
          */
         initialize: function() {
+            // initialize live charts
+            var chart = new SmoothieChart({grid:{fillStyle:'#fff',strokeStyle:'#fff',borderVisible:false},labels:{fillStyle:'#000',disabled:true},maxValue:180,minValue:0});
+            _valsOxygen = new TimeSeries();
+            _valsPulse = new TimeSeries();
+            chart.addTimeSeries(_valsOxygen, {lineWidth:1,strokeStyle:'#000080'});
+            chart.addTimeSeries(_valsPulse, {lineWidth:1,strokeStyle:'#800000'});
+            chart.streamTo(document.getElementById("chart-spo"), dataprovider._delay);
 
-           var chart = new SmoothieChart({grid:{fillStyle:'#fff',strokeStyle:'#fff',borderVisible:false},labels:{fillStyle:'#000',disabled:true},maxValue:180,minValue:0});
-           _valsOxygen = new TimeSeries();
-           _valsPulse = new TimeSeries();
-           chart.addTimeSeries(_valsOxygen, {lineWidth:1,strokeStyle:'#000080'});
-           chart.addTimeSeries(_valsPulse, {lineWidth:1,strokeStyle:'#800000'});
-           chart.streamTo(document.getElementById("chart-spo"), dataprovider._delay);
+            // initialize handler for trace window
+            $('article').hide();
+            $('.notify').on("click", function() {
+               $('article').slideToggle(1000); 
+            });
 
-           this.generalData();
-           dataprovider.startMonitoring();
+            // start engines
+            this.generalData();
+            dataprovider.startMonitoring();
         }
     };
 }) ();

@@ -34,28 +34,36 @@ section {
   section h3 {
     font-size: 18px;
     font-weight: light;
-    color: #888; }
+    color: #888;
+    padding-bottom: 10px; }
   section h3:before {
     content: "Today is "; }
   section canvas {
     padding-top: 20px; }
   section .alarm {
-    background-color: #b00038; }
-  section article {
-    clear: both;
-    padding-top: 20px;
-    display: block;
-    width: 800px !important;
-    font-size: 11px;
-    color: #777;
-    height: 200px;
-    overflow-y: auto; }
-  section div {
+    background-color: #b00038 !important; }
+  section .notify {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: #b00038;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    display: none; 
+    vertical-align: middle;
+}
+  section .cell {
+    border-right: 2px solid #fff;
     padding: 10px;
     background-color: #eee;
     float: left;
-    width: 380px; }
-    section div img {
+    width: 376px;
+    position: relative; }
+    section .cell img {
       float: left;
       margin-right: 20px;
       animation-name: fx;
@@ -67,15 +75,27 @@ section {
       -moz-animation-name: fx;
       -moz-animation-duration: 4s;
       -moz-animation-iteration-count: infinite; }
-    section div h1 {
+    section .cell h1 {
       font-size: 48px;
       color: #999;
       letter-spacing: -1px; }
-    section div h2 {
+    section .cell h2 {
       color: #777;
       font-size: 20px;
       font-weight: normal;
       margin-top: -10px; }
+
+article {
+  background-color: #e8e8e8;
+  border-top: 1px solid #c4c5c6;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 150px;
+  width: 100%;
+  font-size: 11px;
+  color: #777;
+  overflow-y: auto; }
 
 @keyframes fx {
   0%, 100% {
@@ -84,7 +104,6 @@ section {
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1); }
-
   50% {
     -webkit-transform: scale(1.4);
     -moz-transform: scale(1.4);
