@@ -11,6 +11,15 @@
       <script src="js/libs/handlebars.js/handlebars.js" type="text/javascript"></script>
       <script src="js/main.js" type="text/javascript"></script>
       <script src="js/libs/smoothiecharts/smoothiecharts.js" type="text/javascript"></script>
+      
+      <script id="data-watch" type="text/x-handlebars-template">
+         <div class="cell">
+            <div class="notify"><span></span></div>
+            <img src="media/{{{icon}}}" alt="icon" />
+            <h1></h1>
+            <h2>{{{title}}}</h2>
+         </div>
+      </script>
    </head>
    <body>
       
@@ -25,22 +34,6 @@
       
       <section>
          <h3 id="today"></h3>
-         <div id="spo" class="cell">
-             <div class="notify"></div>
-            <img src="media/pulse.png" alt="spo" />
-            <h1>92</h1>
-            <h2>oxygen</h2>
-         </div>
-         
-         <div id="heart" class="cell">
-             <div class="notify"></div>
-            <img src="media/heart.png" alt="bpm" />
-            <h1>100</h1>
-            <h2>BPM</h2>
-         </div>         
-         
-         <canvas id="chart-spo" width="800" height="100"></canvas>
-         
       </section>
       <article></article>
 

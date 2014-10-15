@@ -43,6 +43,7 @@ section {
   section .alarm {
     background-color: #b00038 !important; }
   section .notify {
+    cursor: pointer;
     position: absolute;
     right: 10px;
     top: 10px;
@@ -50,12 +51,13 @@ section {
     height: 32px;
     border-radius: 16px;
     background-color: #b00038;
+    display: none;
     color: #fff;
     font-size: 12px;
-    text-align: center;
-    display: none; 
-    vertical-align: middle;
-}
+    text-align: center; }
+    section .notify span {
+      margin-top: 6px;
+      display: block; }
   section .cell {
     border-right: 2px solid #fff;
     padding: 10px;

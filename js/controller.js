@@ -1,9 +1,14 @@
 var controller = (function() {
-    var _valsOxygen, _valsPulse,
-        _alarmOxygen = 0,
-        _alarmPulse = 0;
+    var _plugins = [];
     
     return {
+        /**
+        * play sound via html5
+        */
+        alarm: function() {
+           var snd = new Audio('media/alarm.wav');
+           snd.play();
+        },
         /**
          * provide common data.
          */
@@ -27,55 +32,6 @@ var controller = (function() {
         },
      
         /**
-         * update oxygen value.
-         * @param {type} val the value
-         */
-        updateOxygen: function(val) {
-           $('#spo h1').html(val);
-           _valsOxygen.append(new Date().getTime(), val);
-           
-           if (alarms.evaluateOxygen(val)) {
-               $('#spo').addClass('alarm');
-               alarms.audio();
-               this.notify(false);
-               this.trace("Oxygen alarm reported. The value {" + val + "} below the allowed limit of {" + alarms.oxygen.low + "}");
-           } else {
-               $('#spo').removeClass('alarm');
-           }
-        },
-        /**
-         * update beats per minute.
-         * @param {type} val the value
-         */
-        updateHeart:function(val) {
-           $('#heart h1').html(val);
-           _valsPulse.append(new Date().getTime(), val);
-           if (alarms.evaluatePulse(val)) {
-               $('#heart').addClass('alarm');
-               alarms.audio();
-               this.notify(true);
-               this.trace("Pulse alarm reported. The value {" + val + "} was out of allowed range {" + alarms.pulse.low + "} and {" + alarms.pulse.upper + "}.");
-           } else {
-               $('#heart').removeClass('alarm');
-           }
-        },
-        /**
-         * notify user about alarms
-         * @param {type} isHeart hear or spo
-         */
-        notify: function(isHeart) {
-            if (isHeart) {
-                _alarmPulse++;
-                $('#heart .notify').html(_alarmPulse);
-                $('#heart .notify').show();
-            } else {
-                _alarmOxygen++;
-                $('#spo .notify').html(_alarmOxygen);
-                $('#spo .notify').show();
-            }
-        },
-        
-        /**
          * put trace information into article area
          */
         trace: function(msg) {
@@ -97,16 +53,20 @@ var controller = (function() {
          * initialize plugins.
          */
         initialize: function() {
-            // initialize live charts
-            var chart = new SmoothieChart({grid:{fillStyle:'#fff',strokeStyle:'#fff',borderVisible:false},labels:{fillStyle:'#000',disabled:true},maxValue:180,minValue:0});
-            _valsOxygen = new TimeSeries();
-            _valsPulse = new TimeSeries();
-            chart.addTimeSeries(_valsOxygen, {lineWidth:1,strokeStyle:'#000080'});
-            chart.addTimeSeries(_valsPulse, {lineWidth:1,strokeStyle:'#800000'});
-            chart.streamTo(document.getElementById("chart-spo"), dataprovider._delay);
-
+            
             // initialize handler for trace window
             $('article').hide();
+
+            // initialize plugins
+            _plugins.push(new dataWatch("Oxygen", "oxygen.png", 85, 101));
+            _plugins.push(new dataWatch("Pulse", "pulse.png", 70, 140));
+            _plugins.push(new dataChart());
+            
+            // now initialize the plugins
+            for (var i = 0; i < _plugins.length; i++) {
+                _plugins[i].initialize();
+            }
+            
             $('.notify').on("click", function() {
                $('article').slideToggle(1000); 
             });
@@ -114,6 +74,18 @@ var controller = (function() {
             // start engines
             this.generalData();
             dataprovider.startMonitoring();
+        },
+        
+        /**
+         * this function will be called from dataprovider.
+         * @param {type} val new values
+         */
+        update: function(val) {
+            if (_plugins.length === 3) {
+              _plugins[0].update(val.oxygen);
+              _plugins[1].update(val.pulse);
+              _plugins[2].update(val);
+            }
         }
     };
 }) ();
