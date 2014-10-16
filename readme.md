@@ -1,8 +1,10 @@
-# pulsewatch
+# pulseWATCH
 
 this is a concept for the dataport of the pulsoxymeter n-560. the data should be read in realtime from the dataport which uses the rs232 protocol.
 
 the data is then reorganized in better readable format. data can be retrieved via REST service to be displayed in a web application.
+
+![window](watch.png)
 
 ## architecture
 
@@ -33,6 +35,4 @@ if a value is out of bounds an alarm is displayed in red and a sound will inform
 
 additionally each alarm is logged in a separate area.
 
-## video monitoring
 
-tbd

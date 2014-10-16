@@ -41,7 +41,8 @@ section {
   section canvas {
     padding-top: 20px; }
   section .alarm {
-    background-color: #b00038 !important; }
+    background-color: #b00038 !important;
+    opacity: 0.90; }
   section .notify {
     cursor: pointer;
     position: absolute;
