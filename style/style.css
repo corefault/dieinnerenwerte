@@ -39,10 +39,11 @@ section {
   section h3:before {
     content: "Today is "; }
   section canvas {
-    padding-top: 20px; }
+    float: left;
+    height: 110px;
+    width: 400px; }
   section .alarm {
-    background-color: #b00038 !important;
-    opacity: 0.90; }
+    background-color: #f42752 !important; }
   section .notify {
     cursor: pointer;
     position: absolute;
@@ -60,12 +61,14 @@ section {
       margin-top: 6px;
       display: block; }
   section .cell {
-    border-right: 2px solid #fff;
+    margin-left: 10px;
+    margin-bottom: 2px;
     padding: 10px;
     background-color: #eee;
     float: left;
-    width: 376px;
-    position: relative; }
+    width: 370px;
+    position: relative;
+    height: 110px; }
     section .cell img {
       float: left;
       margin-right: 20px; }
@@ -90,6 +93,23 @@ article {
   font-size: 11px;
   color: #777;
   overflow-y: auto; }
+
+#critical {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #b00038;
+  opacity: 0.90; }
+  #critical div {
+    font-size: 64px;
+    color: #eee;
+    font-weight: normal;
+    letter-spacing: -2px;
+    margin-top: 50%;
+    text-align: center;
+    display: block; }
 
 .element-animation {
   animation: animationFrames ease-in-out 4s;

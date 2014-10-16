@@ -59,9 +59,11 @@ var controller = (function() {
             $('article').hide();
 
             // initialize plugins
+            _plugins.push(new dataChart("oxygen", "#800000"));
             _plugins.push(new dataWatch("Oxygen", "oxygen.png", 85, 101));
+
+            _plugins.push(new dataChart("pulse", "#000080"));
             _plugins.push(new dataWatch("Pulse", "pulse.png", 70, 140));
-            _plugins.push(new dataChart());
             
             // now initialize the plugins
             for (var i = 0; i < _plugins.length; i++) {
@@ -82,11 +84,23 @@ var controller = (function() {
          * @param {type} val new values
          */
         update: function(val) {
-            if (_plugins.length === 3) {
-              _plugins[0].update(val.oxygen);
-              _plugins[1].update(val.pulse);
-              _plugins[2].update(val);
+            _plugins[0].update(val.oxygen);
+            _plugins[1].update(val.oxygen);
+            _plugins[2].update(val.pulse);
+            _plugins[3].update(val.pulse);
+        },
+        /**
+         * sensor alarm or really bad values.
+         * @param {type} is true if it is critical
+         */
+        critical: function(is) {
+            if (is) {
+                var obj = $('<div id="critical"><div>CRITICAL!</div></div>');
+                $('body').append(obj);
+            } else {
+                $('#critical').remove();
             }
+            
         }
     };
 }) ();
