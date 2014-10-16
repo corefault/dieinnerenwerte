@@ -4,8 +4,6 @@ this is a concept for the dataport of the pulsoxymeter n-560. the data should be
 
 the data is then reorganized in better readable format. data can be retrieved via REST service to be displayed in a web application.
 
-![window](watch.png)
-
 ## architecture
 
 the communication with the n-560 is done with a raspberyy pi board which reads via rs232 the data from the device. for this a lowlevel program must be written to read the port in a specific interval. 
@@ -34,5 +32,3 @@ the application can define ranges for an alarm to inform the user.
 if a value is out of bounds an alarm is displayed in red and a sound will inform the user.
 
 additionally each alarm is logged in a separate area.
-
-
