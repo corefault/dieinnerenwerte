@@ -4,7 +4,7 @@ this is a concept for the dataport of the pulsoxymeter n-560. the data should be
 
 the data is then reorganized in better readable format. data can be retrieved via REST service to be displayed in a web application.
 
-![window](watch.png)
+![window](./watch.png)
 
 ## architecture
 
