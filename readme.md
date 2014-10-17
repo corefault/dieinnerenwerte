@@ -32,3 +32,22 @@ the application can define ranges for an alarm to inform the user.
 if a value is out of bounds an alarm is displayed in red and a sound will inform the user.
 
 additionally each alarm is logged in a separate area.
+
+## reading from serial port
+
+the port runs on 19200 baus and sends a line each 2seconds in the following format
+
+    28-Nov-05 12:18:28   ---     ---     ---    SO  
+    
+using the usb to serial adapter will put a device on /dev/usbserial
+
+* date: 18 signs
+* 3 empty
+* 3 SPo2
+* 5 empty
+* 3 pulse
+* 5 empty
+* 3 PA
+* 4 empty
+* S0 is critical
+* 

@@ -5,6 +5,25 @@ var dataprovider = (function() {
        
    return {
        /**
+        * possible status values
+        */
+       status: {
+           AO: "Alarm Aus",
+           AS: "Alarm stummgeschaltet",
+           LB:  "Schwache Batterie",
+           LM: "Pulsverlust m.Störung",
+           LP: "Pulsverlust",
+           MO: "Störung erkannt",
+           PH: "Alarm bei Überschreiten der oberen Grenze der Pulsfrequenz",
+           PL: "Alarm bei Unterschreiten der unteren Grenze der Pulsfrequenz",
+           PS: "Pulssuche",
+           SH: "Alarm bei Überschreitung der oberen Grenze der Sättigung",
+           SL: "Alarm bei Unterschreitung der unteren Grenze der Sättigung",
+           SD: "Sensor Gelöst",
+           SO: "Sensor Aus"
+       },
+       
+       /**
         * generate random value in range
         * @param {type} mi minimum
         * @param {type} ma maximum
@@ -22,9 +41,15 @@ var dataprovider = (function() {
            $.mockjax({
                url: _url,
                response: function(data) {
+                  var mocktext = ["AO","AS","LB","LM","LP","MO","PH","PL","PS","SH","SL","SD","SO"];
+                  var index = dataprovider.randomizer(0, mocktext.length);
+                  var st    = mocktext[index];
+                  
                   this.responseText = {
                      oxygen: dataprovider.randomizer(75, 100),
-                     pulse:  dataprovider.randomizer(65, 160)
+                     pulse:  dataprovider.randomizer(65, 160),
+                     pa:     dataprovider.randomizer(1,254),
+                     status: st
                   };
               }
            });

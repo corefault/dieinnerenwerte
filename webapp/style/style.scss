@@ -22,6 +22,7 @@ body {
 
 
 header {
+    position:relative;
    img {
       width:84px;
       height:84px;
@@ -32,6 +33,13 @@ header {
    aside {
       float:left;
       margin-left:20px;
+   }
+   
+   .status {
+       position:absolute;
+       right:10px;
+       color:#800000;
+       font-size:16px;
    }
    
    h1 {

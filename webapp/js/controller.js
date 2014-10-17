@@ -88,6 +88,13 @@ var controller = (function() {
             _plugins[1].update(val.oxygen);
             _plugins[2].update(val.pulse);
             _plugins[3].update(val.pulse);
+            
+            // check status
+            var text = "";
+            if (val.status.length > 0) {
+               text = dataprovider.status[val.status];  
+            } 
+            $('.status').html(text);
         },
         /**
          * sensor alarm or really bad values.
