@@ -63,7 +63,7 @@ var controller = (function() {
             _plugins.push(new dataWatch("Oxygen", "oxygen.png", 85, 101));
 
             _plugins.push(new dataChart("pulse", "#000080"));
-            _plugins.push(new dataWatch("Pulse", "pulse.png", 70, 140));
+            _plugins.push(new dataWatch("Pulse", "pulse.png", 60, 140));
             
             // now initialize the plugins
             for (var i = 0; i < _plugins.length; i++) {
@@ -88,11 +88,19 @@ var controller = (function() {
             _plugins[1].update(val.oxygen);
             _plugins[2].update(val.pulse);
             _plugins[3].update(val.pulse);
+        
+            // check for error
+            if (val.oxygen === "---" || val.pulse === "---") {
+                controller.critical( true );
+            } else {
+                controller.critical( false );
+            }
             
             // check status
             var text = "";
-            if (val.status.length > 0) {
+            if (val.status != "") {
                text = dataprovider.status[val.status];  
+               controller.trace("Status detected: {" + text + "}");
             } 
             $('.status').html(text);
         },
@@ -101,13 +109,12 @@ var controller = (function() {
          * @param {type} is true if it is critical
          */
         critical: function(is) {
+            $('#critical').remove();
             if (is) {
                 var obj = $('<div id="critical"><div>CRITICAL!</div></div>');
                 $('body').append(obj);
-            } else {
-                $('#critical').remove();
-            }
-            
+                controller.trace("CRITICAL ALARM!");
+            } 
         }
     };
 }) ();

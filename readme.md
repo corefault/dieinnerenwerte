@@ -25,6 +25,14 @@ the UI provides the following data
 * oxygen value
 * visualization of the data in a live chart
 
+the web application supports two modes
+
+* realtime (default)
+* simulation mode with mock requests (use #debug in url)
+
+the pulsoxymeter reports status information about the device itself like sensor loss or low battery.
+this status is displayed in the upper right corner and traced in the protocol window.
+
 ## alarmsystem
 
 the application can define ranges for an alarm to inform the user.
@@ -41,13 +49,3 @@ the port runs on 19200 baus and sends a line each 2seconds in the following form
     
 using the usb to serial adapter will put a device on /dev/usbserial
 
-* date: 18 signs
-* 3 empty
-* 3 SPo2
-* 5 empty
-* 3 pulse
-* 5 empty
-* 3 PA
-* 4 empty
-* S0 is critical
-* 

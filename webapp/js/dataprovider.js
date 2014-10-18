@@ -1,5 +1,5 @@
 var dataprovider = (function() {
-   var _url = "getdata",
+   var _url = "/backend/getdata.php",
        _delay = 4000,
        _running = false;
        
@@ -36,21 +36,35 @@ var dataprovider = (function() {
          * start monitoring.
          */
         startMonitoring: function () {
-           // we are mocking the ajax calls
-           $.mockjaxSettings.contentType = 'text/json';
-           $.mockjax({
-               url: _url,
+            if (location.hash == "#debug") {
+                _url = "getdata";
+                document.title = "puls|WATCH # simulationmode";
+            }
+            // we are mocking the ajax calls
+            $.mockjaxSettings.contentType = 'text/json';
+            $.mockjax({
+               url: "getdata",
                response: function(data) {
                   var mocktext = ["AO","AS","LB","LM","LP","MO","PH","PL","PS","SH","SL","SD","SO"];
                   var index = dataprovider.randomizer(0, mocktext.length);
                   var st    = mocktext[index];
                   
-                  this.responseText = {
-                     oxygen: dataprovider.randomizer(75, 100),
-                     pulse:  dataprovider.randomizer(65, 160),
-                     pa:     dataprovider.randomizer(1,254),
-                     status: st
-                  };
+                  var critical = dataprovider.randomizer(0, 100);
+                  if (critical > 70) {
+                    this.responseText = {
+                       oxygen: "---",
+                       pulse:  "---",
+                       pa:     dataprovider.randomizer(1,254),
+                       status: "SO"
+                    };
+                  } else {
+                    this.responseText = {
+                       oxygen: dataprovider.randomizer(75, 100),
+                       pulse:  dataprovider.randomizer(65, 160),
+                       pa:     dataprovider.randomizer(1,254),
+                       status: st
+                    };
+                }
               }
            });
            controller.trace("Started monitoring...");

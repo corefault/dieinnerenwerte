@@ -17,8 +17,6 @@ function dataWatch(name, icon, lower, upper) {
             
     this.update = function (val) {
         
-        controller.critical( (val === 0) );
-        
         $('h1', object).html(val);
         if (val <= opts.min || val >= opts.max) {
             object.addClass("alarm");
