@@ -1,6 +1,6 @@
 var dataprovider = (function() {
    var _url = "/backend/getdata.php",
-       _delay = 4000,
+       _delay = 2000,
        _running = false;
        
    return {
@@ -10,7 +10,7 @@ var dataprovider = (function() {
        status: {
            AO: "Alarm Aus",
            AS: "Alarm stummgeschaltet",
-           LB:  "Schwache Batterie",
+           LB: "Schwache Batterie",
            LM: "Pulsverlust m.Störung",
            LP: "Pulsverlust",
            MO: "Störung erkannt",
@@ -50,7 +50,7 @@ var dataprovider = (function() {
                   var st    = mocktext[index];
                   
                   var critical = dataprovider.randomizer(0, 100);
-                  if (critical > 70) {
+                  if (critical > 85) {
                     this.responseText = {
                        oxygen: "---",
                        pulse:  "---",

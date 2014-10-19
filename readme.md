@@ -4,9 +4,11 @@ this is a concept for the dataport of the pulsoxymeter n-560. the data should be
 
 the data is then reorganized in better readable format. data can be retrieved via REST service to be displayed in a web application.
 
+for more information [website](http://dieinnerenwerte.de)
+
 ## architecture
 
-the communication with the n-560 is done with a raspberyy pi board which reads via rs232 the data from the device. for this a lowlevel program must be written to read the port in a specific interval. 
+the communication with the n-560 is done with a raspberry pi board which reads via rs232 the data from the device. for this a lowlevel program must be written to read the port in a specific interval. 
 
 the interval might be configurable in the future.
 

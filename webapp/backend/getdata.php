@@ -1,12 +1,15 @@
 <?php
 
-
+/** 
+ * write debugging information
+ * @param type $msg the message to write
+ */
 function tracelog($msg) {
-    $fp = @fopen("protocol.txt", "at");
+    $fp = @fopen("/backend/protocol.txt", "a+");
     if ($fp) {
-        @fwrite($fp, $msg);
-        @fwrite($fp, "\r\n");
-        @fclose($fp);
+        fwrite($fp, $msg);
+        fwrite($fp, "\r\n");
+        fclose($fp);
     }
 }
 

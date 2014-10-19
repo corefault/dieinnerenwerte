@@ -27,6 +27,7 @@ var controller = (function() {
             years = years.toFixed(0);
             $('#age').html(years + " years old");
             $('#weight').html(user.weight);
+            $('#gender').html(user.gender);
 
             $('#today').html(today.toLocaleDateString());
         },
@@ -59,10 +60,10 @@ var controller = (function() {
             $('article').hide();
 
             // initialize plugins
-            _plugins.push(new dataChart("oxygen", "#800000"));
+            _plugins.push(new dataChart("oxygen", "#800000", 0, 100));
             _plugins.push(new dataWatch("Oxygen", "oxygen.png", 85, 101));
 
-            _plugins.push(new dataChart("pulse", "#000080"));
+            _plugins.push(new dataChart("pulse", "#000080", 0, 180));
             _plugins.push(new dataWatch("Pulse", "pulse.png", 60, 140));
             
             // now initialize the plugins
