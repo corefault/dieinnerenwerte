@@ -1,0 +1,83 @@
+/* 
+    Created on : 19.10.2014, 17:16:50
+    Author     : corefault
+*/
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 22px; }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #c5c5c5;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  color: #555;
+  font-weight: 200;
+  font-size: 38px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  header ul {
+    float: right; }
+    header ul li {
+      font-size: 15px;
+      color: #999;
+      float: left;
+      list-style-type: none;
+      margin-left: 20px; }
+      header ul li a {
+        text-decoration: none;
+        color: #646464; }
+      header ul li a:hover {
+        color: #000; }
+
+.container {
+  margin: 0 auto;
+  width: 700px; }
+
+footer {
+  border-bottom: 1px solid #c5c5c5;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa; }
+
+section {
+  padding-top: 20px;
+  clear: both; }
+  section .clearfix {
+    clear: both; }
+  section .center {
+    text-align: center;
+    color: #555; }
+  section .columns {
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-size: 13px;
+    color: #555; }
+    section .columns img {
+      height: 32px;
+      display: block;
+      margin: 0 auto; }
+  section h2 {
+    font-weight: 100;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 10px; }
+  section .cut {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c5c5c5; }
+  section .first {
+    padding-top: 100px; }
+  section .right {
+    float: right; }
+
+/*# sourceMappingURL=normal.css.map */

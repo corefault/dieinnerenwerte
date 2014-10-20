@@ -38,7 +38,7 @@ var dataprovider = (function() {
         startMonitoring: function () {
             if (location.hash == "#debug") {
                 _url = "getdata";
-                document.title = "puls|WATCH # simulationmode";
+                document.title = "Die inneren Werte (Simulationmode)";
             }
             // we are mocking the ajax calls
             $.mockjaxSettings.contentType = 'text/json';
