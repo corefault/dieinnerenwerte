@@ -15,5 +15,12 @@ $(document).ready(function () {
          window.location.hash = target;
       });
    });
+   
+   $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    directionNav: false,
+    easing: "swing"
+  });
 });
 

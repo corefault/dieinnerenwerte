@@ -7,6 +7,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
         <link href="style/normal.css" rel="stylesheet" type="text/css"/>
         <script src="js/libs/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="js/libs/flexslider/jquery.flexslider-min.js" type="text/javascript"></script>
         <script src="js/root.js" type="text/javascript"></script>
     </head>
 
@@ -29,26 +30,33 @@
                 Die Idee zu diesem Projekt kommt aus dem privaten Umfeld. 
                 Grob gesagt, geht es darum, Daten von einem Pulsoxymeter auszulesen und diese in einer 
                 Web Anwendung zu Verfügung zu stellen. 
-                <img width="100%" src="style/web.png" alt="logo" />
+                <img width="100%" src="style/images/web.png" alt="logo" />
             </div>
         </section>
         <section id="arch">
             <div class="container cut">
                 <h2>Funktionen</h2>
                 <div class="columns">
-                    <img src="style/health.png" />
+                    <img src="style/images/user.png" />
+                    Anzeigen der Benutzerdaten.
+                </div><div class="columns">
+                    <img src="style/images/health.png" />
                     Überwachen von Puls und Sauerstoffsättigung.
                 </div>
                 <div class="columns">
-                    <img src="style/cyclic.png" />
-                    Die Werte werden zyklisch abgeholt und visualisiert.
+                    <img src="style/images/cyclic.png" />
+                    Die Werte werden zyklisch abgeholt.
                 </div>
                 <div class="columns">
-                    <img src="style/alarm.png" />
+                    <img src="style/images/chart.png" />
+                    Visualisierung der Werte.
+                </div>
+                <div class="columns">
+                    <img src="style/images/alarm.png" />
                     Grenzüberwachung mit automatischen Alarm. Anzahl der Alarme wird protokolliert und angezeigt.
                 </div>
                 <div class="columns">
-                    <img src="style/trace.png" />
+                    <img src="style/images/trace.png" />
                     Alles wird protokolliert und in einem separaten Bereich dargestellt.
                 </div>
 
@@ -66,6 +74,16 @@
                     In meinem Fall, wollte ich jedoch eine Lösung, die mich nicht nur den Alarm hören lässt, sondern bei dem ich alle Informationen
                     direkt sehen kann. 
                 </p>
+                
+                <div class="flexslider center">
+                   <ul class="slides">
+                      <li><img src="style/images/rasp1.jpg" /></li>
+                      <li><img src="style/images/rasp2.jpg" /></li>
+                      <li><img src="style/images/rasp3.jpg" /></li>
+                      <li><img src="style/images/rasp4.jpg" /></li>
+                   </ul>
+                   
+                </div>
                 <br class="clearfix" />
             </div>
         </section>
