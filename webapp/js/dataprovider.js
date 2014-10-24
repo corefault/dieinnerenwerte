@@ -58,6 +58,10 @@ var dataprovider = (function() {
                        status: "SO"
                     };
                   } else {
+                      
+                    if (critical < 50) {
+                        st = "";
+                    }
                     this.responseText = {
                        oxygen: dataprovider.randomizer(75, 100),
                        pulse:  dataprovider.randomizer(65, 160),
