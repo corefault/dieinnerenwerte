@@ -111,6 +111,20 @@ section {
     .first {
         padding-top:100px;
     }
+    
+    pre {
+        border-left:2px solid #50585f;
+        background-color:#eee;
+        padding-left:10px;
+        
+        .comment {
+            color:#006400;
+            font-weight:bold;
+        }
+        .comment:before {
+            content: '# ';
+        }
+    }
 
     .right {
         float: right;

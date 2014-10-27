@@ -94,14 +94,43 @@
             <div class="container cut">
                 <h2>Installation</h2>
                 <p class="center">
-                    Die Hauptaufgabe besteht darin, den Raspberry Pi einzurichten. Die Schritte hierbei waren:
-                    <ol class="ml40">
-                        <li>System installieren</li>
-                        <li>Apache und PHP installieren</li>
-                        <li>Frontend und Backend Software installieren</li>
-                        <li>WLAN einrichten</li>
-                        <li>Device (USB auf seriell) einrichten</li>
-                    </ol>
+                    Auf dem Raspberry Pi sind einige Schritte notwendig, um das System vorzubereiten. Nachdem das System installiert ist, müssen zunächst einige Softwarepakete installiert werden.
+                </p>
+                
+                <pre><span class="comment">Installation des Web Servers lighttpd</span>
+sudo apt-get install lighttpd</pre>
+
+                <p class="center">
+                    Die Konfiguration des Lighttp Servers ist wie folgt.
+                </p>
+                <pre>sudo nano /etc/lighttpd/lighttpd.conf
+server.modules = (
+    "mod_access",
+    "mod_alias",
+    "mod_compress",
+    "mod_redirect",
+    "mod_fastcgi"
+)
+...
+fastcgi.server = (
+  ".php" =>
+  (( "host" => "127.0.0.1",
+     "port" => 1026,
+      "bin-path" => "/usr/local/bin/php"
+  )) 
+)
+                </pre>
+                <p class="center">
+                    Danach muss die Schnittstelle eingerichtet werden. Ich habe einen USB auf Seriell Adapter verwendet, der automatisch erkannt wird. Dennoch sind einige Einstellungen notwendig.
+                </p>
+                <pre>
+sudo /etc/rc.local
+chmod o=rx /dev/ttyUSB0
+stty -F /dev/ttyUSB0 ispeed 19200 ospeed 19200
+                </pre>
+
+                <p class="center">
+                    Danach noch das WLAN konfigurieren. Wenn alles soweit funktioniert, kann die Überwachungssoftware unter /var/www installiert werden.
                 </p>
             </div>
         </section>

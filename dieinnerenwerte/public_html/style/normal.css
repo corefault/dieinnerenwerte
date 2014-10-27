@@ -80,6 +80,15 @@ section {
     border-bottom: 1px solid #c5c5c5; }
   section .first {
     padding-top: 100px; }
+  section pre {
+    border-left: 2px solid #50585f;
+    background-color: #eee;
+    padding-left: 10px; }
+    section pre .comment {
+      color: #006400;
+      font-weight: bold; }
+    section pre .comment:before {
+      content: '# '; }
   section .right {
     float: right; }
 
