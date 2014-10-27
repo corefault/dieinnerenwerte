@@ -92,9 +92,9 @@ var dataprovider = (function() {
                    success: function(data) {
                        controller.update(data);
                    },
-                   error: function(){
+                   error: function(x,s,hdr){
                       _running = false;
-                       console.log("ouch");
+                      $(".status").html("Fehler beim Lesen. Abbruch. (" + hdr +")");
                    }
                });
               if (_running !== false) {

@@ -19,8 +19,9 @@
                 <ul>
                     <li><a href="#idea">Übersicht</a></li>
                     <li><a href="#arch">Funktionen</a></li>
-                    <li><a href="#hw">Hardware</a></li>
-                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#hw">Bilder</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#todo">Ausblick</a></li>
                 </ul>
             </div>
         </header>
@@ -76,9 +77,7 @@
         </section>
         <section id="hw">
             <div class="container cut">
-                <h2>Hardware</h2>
-                
-                
+                <h2>Bilder</h2>
                 <div class="flexslider center">
                    <ul class="slides">
                       <li><img src="style/images/rasp1.jpg" /></li>
@@ -91,14 +90,34 @@
                 <br class="clearfix" />
             </div>
         </section>
-        <section id="about">
-            <div class="container">
-                <h2>Über mich</h2>
+        <section id="installation">
+            <div class="container cut">
+                <h2>Installation</h2>
                 <p class="center">
-                    Ich bin Software Entwickler und wollte eine Lösung haben, die schnell, einfach und ohne zusätzliche Kosten funktioniert.
-                    Des weiteren sah ich hier eine gute Gelegenheit mit dem Raspberry Pi zu arbeiten.
+                    Die Hauptaufgabe besteht darin, den Raspberry Pi einzurichten. Die Schritte hierbei waren:
+                    <ol class="ml40">
+                        <li>System installieren</li>
+                        <li>Apache und PHP installieren</li>
+                        <li>Frontend und Backend Software installieren</li>
+                        <li>WLAN einrichten</li>
+                        <li>Device (USB auf seriell) einrichten</li>
+                    </ol>
                 </p>
-
+            </div>
+        </section>
+        <section id="todo">
+            <div class="container">
+                <h2>Ausblick</h2>
+                <p class="center">
+                    Alles hat in einen ersten Test gut funktioniert. Hierbei sind jedoch weitere Anforderungen und Ideen entstanden
+                <ul class="ml40">
+                    <li>Benutzerverwaltung</li>
+                    <li>Alarme werden Serverseitig gespeichert</li>
+                    <li>Abfrage der Alarme vom Server</li>
+                    <li>Automatisches Einstellen der Grenzen vom Pulsoxymeter</li>
+                    <li>Kameraüberwachung am Raspberry Pi</li>
+                </ul>
+                </p>
                 <br class="clearfix" />
             </div>
         </section>
@@ -109,19 +128,3 @@
 
     </body>
 </html>
-<!--
-            
-            Aber warum das Ganze ? Der Pulsoxymeter überwacht doch schon die Werte und zeigt diese an. 
-            Auch ein Alarm wird akustisch gemeldet. Hier ist allerdings schon das erste Problem. Den Alarm muss man hören können.
-            Es gibt Situationen, bei denen der Alarm schlecht oder gar nicht hörbar ist und man dennoch eine Überwachung benötigt.
-            Auch hierfür gibt es bereits je nach Hersteller fertige Lösungen. 
-            In meinem Fall, wollte ich jedoch eine Lösung, die mich nicht nur den Alarm hören lässt, sondern bei dem ich alle Informationen
-            direkt sehen kann. 
-            Wie also kann man dies realisieren ? In meinem konkreten Fall, einem Pulsoxymeter N-560, kann der Datenport ausgelesen werden.
-            Die Daten werden im ASCII Format übertragen und es werden alle relevanten Informationen gemeldet.<br/>
-            Die Informationen müssen dann nur entsprechend für eine Web Anwendung aufbereitet werden.
-            <p>Der grobe Architekturplan war wie folgt:</p>
-
-            <code>
-            </code>
--->

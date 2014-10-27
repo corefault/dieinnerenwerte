@@ -37,7 +37,7 @@ header {
             color:#999;
             float:left;
             list-style-type: none;
-            margin-left:20px;
+            margin-left:10px;
 
             a {
                 text-decoration:none;
@@ -72,6 +72,10 @@ section {
         clear:both;
     }
 
+    .ml40 {
+        margin-left:40px;
+    }
+    
     .center {
         text-align:center;
         color:#555;

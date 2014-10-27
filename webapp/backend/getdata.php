@@ -1,11 +1,14 @@
 <?php
 
+/* set header to json response content */
+header("Content-type: application/json");
+
 /** 
  * write debugging information
  * @param type $msg the message to write
  */
 function tracelog($msg) {
-    $fp = @fopen("/backend/protocol.txt", "a+");
+    $fp = @fopen("./protocol.txt", "a+");
     if ($fp) {
         fwrite($fp, $msg);
         fwrite($fp, "\r\n");
@@ -17,32 +20,33 @@ function tracelog($msg) {
  * reading data from serial port and
  * translate data into JSON
  */
-header("Content-type: application/json");
-$device = "/dev/cu.usbserial";
-$buffer = "";
-$fp = fopen($device, "r");
-if ($fp) {
-    $buffer = fgets ($fp);
+function readFromDevice() {
+   $device = "/dev/ttyUSB0";
+
+   $buffer = "";
+   $fp = fopen($device, "r");
+   if ($fp) {
+//      stream_set_blocking($fp,0);
+      $buffer = fgets ($fp);
+   }
+   fclose($fp);
+   if (strlen($buffer) > 0) {
+      $date = substr($buffer,0,18);
+      $spo2 = substr($buffer,21,3);
+      $pulse = substr($buffer,29,3);
+      $pa = substr($buffer,37,3);
+      $status = "";
+      if (strlen($buffer) >= 44) {
+          $status = substr($buffer,44,2); 
+      }
+      
+      $json = "{\"oxygen\": \"$spo2\", \"pulse\": \"$pulse\", \"pa\": \"$pa\", \"status\": \"$status\"}\n";
+      echo $json;
+   } else {
+      echo "{}";
+   }
 }
-fclose($fp);
 
-// now we have a line -> translate
-// 28-Nov-05 16:07:39   100      91      24    MO               
-// 28-Nov-05 15:58:59   100      96       8 
-$date = substr($buffer,0,18);
-$spo2 = substr($buffer,21,3);
-$pulse = substr($buffer,29,3);
-$pa = substr($buffer,38,3);
-$status = "";
-if (count($buffer) > 44) {
-    $status = substr($buffer,44,2);
-}
+readFromDevice();
 
-$json = "{\"oxygen\": \"$spo2\", \"pulse\": \"$pulse\", \"pa\": \"$pa\", \"status\": \"$status\"}\n";
-
-tracelog ("DEVICE: $buffer");
-tracelog ("JSON  : $json");
-tracelog ("------------------------------------------------------------------");
-
-echo $json;
 ?>

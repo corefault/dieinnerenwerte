@@ -32,7 +32,7 @@ header {
       color: #999;
       float: left;
       list-style-type: none;
-      margin-left: 20px; }
+      margin-left: 10px; }
       header ul li a {
         text-decoration: none;
         color: #646464; }
@@ -54,6 +54,8 @@ section {
   clear: both; }
   section .clearfix {
     clear: both; }
+  section .ml40 {
+    margin-left: 40px; }
   section .center {
     text-align: center;
     color: #555; }
