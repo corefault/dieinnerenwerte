@@ -23,32 +23,37 @@ header {
     float: left;
     margin-left: 20px; }
   header .status {
+    text-transform: uppercase;
     position: absolute;
     right: 10px;
-    color: #800000;
-    font-size: 16px; }
+    color: #b00038;
+    font-size: 16px;
+    letter-spacing: -1px; }
+  header .info {
+    margin-top: -10px; }
   header h1 {
-    font-size: 32px;
+    font-size: 48px;
     font-weight: normal;
     color: #000; }
   header span {
     color: #a2a2a2;
-    display: block; }
+    font-size: 11px; }
 
 section {
   clear: both;
   padding-top: 30px; }
   section h3 {
-    font-size: 18px;
-    font-weight: light;
+    font-size: 24px;
+    font-weight: 200;
     color: #888;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+    margin-bottom: 30px; }
   section h3:before {
     content: "Today is "; }
-  section canvas {
+  section canvas, section svg {
     float: left;
     height: 110px;
-    width: 400px; }
+    width: 533.33333px; }
   section .alarm {
     background-color: #f42752 !important; }
   section .notify {
@@ -71,9 +76,9 @@ section {
     margin-left: 10px;
     margin-bottom: 2px;
     padding: 10px;
-    background-color: #eee;
+    background-color: #fefefe;
     float: left;
-    width: 370px;
+    width: 236.66667px;
     position: relative;
     height: 110px; }
     section .cell img {
@@ -95,11 +100,13 @@ article {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 150px;
+  height: 200px;
   width: 100%;
-  font-size: 11px;
+  font-size: 12px;
   color: #777;
   overflow-y: auto; }
+  article div {
+    padding: 10px; }
 
 #critical {
   position: fixed;
@@ -110,11 +117,14 @@ article {
   background-color: #b00038;
   opacity: 0.90; }
   #critical div {
+    position: absolute;
     font-size: 64px;
     color: #eee;
     font-weight: normal;
     letter-spacing: -2px;
-    margin-top: 40%;
+    top: 40%;
+    left: 0;
+    width: 100%;
     text-align: center;
     display: block; }
 
@@ -133,26 +143,31 @@ article {
 @keyframes animationFrames {
   0%, 100% {
     transform: scaleX(0.8) scaleY(0.8); }
+
   50% {
     transform: scaleX(1.2) scaleY(1.2); } }
 @-moz-keyframes animationFrames {
   0%,100% {
     -moz-transform: scaleX(0.8) scaleY(0.8); }
+
   50% {
     -moz-transform: scaleX(1.2) scaleY(1.2); } }
 @-webkit-keyframes animationFrames {
   0%,100% {
     -webkit-transform: scaleX(0.8) scaleY(0.8); }
+
   50% {
     -webkit-transform: scaleX(1.2) scaleY(1.2); } }
 @-o-keyframes animationFrames {
   0%,100% {
     -o-transform: scaleX(0.8) scaleY(0.8); }
+
   50% {
     -o-transform: scaleX(1.2) scaleY(1.2); } }
 @-ms-keyframes animationFrames {
   0%,100% {
     -ms-transform: scaleX(0.8) scaleY(0.8); }
+
   50% {
     -ms-transform: scaleX(1.2) scaleY(1.2); } }
 

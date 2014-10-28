@@ -38,6 +38,7 @@ var dataprovider = (function() {
         startMonitoring: function () {
             if (location.hash == "#debug") {
                 _url = "getdata";
+                _delay = 1000;
                 document.title = "Die inneren Werte (Simulationmode)";
             }
             // we are mocking the ajax calls

@@ -42,7 +42,7 @@ var controller = (function() {
            msg = msg.replace(/{/g,"<strong>");
            msg = msg.replace(/}/g,"</strong>");
            
-           $('article').prepend("<strong>"
+           $('article div').prepend("<strong>"
                                 + now.toLocaleDateString()
                                 + " "
                                 + now.toLocaleTimeString()
@@ -55,15 +55,27 @@ var controller = (function() {
          * initialize plugins.
          */
         initialize: function() {
+           
+           var source   = $("#data-content").html();
+           var template = Handlebars.compile(source);
+        
+           var html    = template({});
+           object = $(html);
+        
+           // append to section
+           $('body').empty();
+           $('body').append(object);
+           
+           
             
             // initialize handler for trace window
             $('article').hide();
 
             // initialize plugins
-            _plugins.push(new dataChart("oxygen", "#800000", 0, 100));
+            _plugins.push(new dataChart("oxygen", "#b00038", 0, 100));
             _plugins.push(new dataWatch("Oxygen", "oxygen.png", 85, 101));
 
-            _plugins.push(new dataChart("pulse", "#000080", 0, 180));
+            _plugins.push(new dataChart("pulse", "#50585f", 0, 180));
             _plugins.push(new dataWatch("Pulse", "pulse.png", 60, 140));
             
             // now initialize the plugins
