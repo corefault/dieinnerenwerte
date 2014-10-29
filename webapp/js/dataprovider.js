@@ -42,7 +42,6 @@ var dataprovider = (function() {
                 document.title = "Die inneren Werte (Simulationmode)";
             }
             // we are mocking the ajax calls
-            $.mockjaxSettings.contentType = 'text/json';
             $.mockjax({
                url: "getdata",
                response: function(data) {

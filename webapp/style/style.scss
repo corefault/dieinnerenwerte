@@ -15,12 +15,32 @@ $animationsettings: animationFrames ease-in-out 4s;
    font-family: 'Open Sans', sans-serif;
 }
 
+#user {
+    text-align:center;
+    margin-top:100px;
+    font-size:28px;
+    font-weight:200;
+    
+    select {
+        font-size:28px;
+    }
+}
+
 body {
    margin:80px auto;
    width:$width;
    font-size:13px;
 }
 
+.status {
+   text-transform: uppercase;
+   position:absolute;
+   right:10px;
+   top:10px;
+   color:#b00038;
+   font-size:16px;
+   letter-spacing:-1px;
+}
 
 header {
     position:relative;
@@ -34,15 +54,6 @@ header {
    aside {
       float:left;
       margin-left:20px;
-   }
-   
-   .status {
-      text-transform: uppercase;
-       position:absolute;
-       right:10px;
-       color:#b00038;
-       font-size:16px;
-       letter-spacing:-1px;
    }
    
    .info {

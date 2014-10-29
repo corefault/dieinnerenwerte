@@ -1,0 +1,26 @@
+{
+    "list": [
+        {
+            "name": "Phineas Flynn",
+            "bday": "2007-08-17",
+            "weight": "23kg",
+            "gender": "male",
+            "icon": "media/phineas.jpg"
+        },
+        {
+            "name": "Ferb Fletcher",
+            "bday": "2007-08-17",
+            "weight": "24kg",
+            "gender": "male",
+            "icon": "media/ferb.jpg"
+        },
+        {
+            "name": "Dr. Heinz Doofenshmirtz",
+            "bday": "2007-08-17",
+            "weight": "65kg",
+            "gender": "male",
+            "icon": "media/heinz.jpg"
+        }
+        
+    ]
+}

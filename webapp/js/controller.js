@@ -9,28 +9,6 @@ var controller = (function() {
            var snd = new Audio('media/alarm.wav');
            snd.play();
         },
-        /**
-         * provide common data.
-         */
-        generalData: function() {
-            $('#name').html(user.name);
-            var  age = new Date(user.bday);
-            var  today = new Date();
-
-            var diff = today.getTime() - age.getTime();
-            var day = 1000 * 60 * 60 * 24;
-
-            var days   = diff / day;
-            var months = days / 31;
-            var years  = months / 12;
-
-            years = years.toFixed(0);
-            $('#age').html(years + " years old");
-            $('#weight').html(user.weight);
-            $('#gender').html(user.gender);
-
-            $('#today').html(today.toLocaleDateString());
-        },
      
         /**
          * put trace information into article area
@@ -53,20 +31,21 @@ var controller = (function() {
 
         /**
          * initialize plugins.
+         * @param {type} userdata the data for selected user
          */
-        initialize: function() {
+        initialize: function(userdata) {
            
-           var source   = $("#data-content").html();
-           var template = Handlebars.compile(source);
+            var source   = $("#data-content").html();
+            var template = Handlebars.compile(source);
+
+            // add current date
+            userdata["today"] = new Date().toLocaleDateString();
+            var html    = template(userdata);
+            object = $(html);
         
-           var html    = template({});
-           object = $(html);
-        
-           // append to section
-           $('body').empty();
-           $('body').append(object);
-           
-           
+            // append to section
+            $('body').empty();
+            $('body').append(object);
             
             // initialize handler for trace window
             $('article').hide();
@@ -87,8 +66,6 @@ var controller = (function() {
                $('article').slideToggle(1000); 
             });
 
-            // start engines
-            this.generalData();
             dataprovider.startMonitoring();
         },
         

@@ -7,10 +7,27 @@
   padding: 0;
   font-family: 'Open Sans', sans-serif; }
 
+#user {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 28px;
+  font-weight: 200; }
+  #user select {
+    font-size: 28px; }
+
 body {
   margin: 80px auto;
   width: 800px;
   font-size: 13px; }
+
+.status {
+  text-transform: uppercase;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #b00038;
+  font-size: 16px;
+  letter-spacing: -1px; }
 
 header {
   position: relative; }
@@ -22,13 +39,6 @@ header {
   header aside {
     float: left;
     margin-left: 20px; }
-  header .status {
-    text-transform: uppercase;
-    position: absolute;
-    right: 10px;
-    color: #b00038;
-    font-size: 16px;
-    letter-spacing: -1px; }
   header .info {
     margin-top: -10px; }
   header h1 {
@@ -143,31 +153,26 @@ article {
 @keyframes animationFrames {
   0%, 100% {
     transform: scaleX(0.8) scaleY(0.8); }
-
   50% {
     transform: scaleX(1.2) scaleY(1.2); } }
 @-moz-keyframes animationFrames {
   0%,100% {
     -moz-transform: scaleX(0.8) scaleY(0.8); }
-
   50% {
     -moz-transform: scaleX(1.2) scaleY(1.2); } }
 @-webkit-keyframes animationFrames {
   0%,100% {
     -webkit-transform: scaleX(0.8) scaleY(0.8); }
-
   50% {
     -webkit-transform: scaleX(1.2) scaleY(1.2); } }
 @-o-keyframes animationFrames {
   0%,100% {
     -o-transform: scaleX(0.8) scaleY(0.8); }
-
   50% {
     -o-transform: scaleX(1.2) scaleY(1.2); } }
 @-ms-keyframes animationFrames {
   0%,100% {
     -ms-transform: scaleX(0.8) scaleY(0.8); }
-
   50% {
     -ms-transform: scaleX(1.2) scaleY(1.2); } }
 

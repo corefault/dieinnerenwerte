@@ -20,18 +20,31 @@
          </div>
       </script>
       
+      <script id="data-user" type="text/x-handlebars-template">
+          <div id="user">
+          Select user<br/>
+          <select>
+          <option val="-1">---</option>
+          {{#each list}}
+            <option value="{{@index}}">{{{name}}}</option>
+          {{/each}}
+          </select>
+          </div>
+      </script>
+      
       <script id="data-content" type="text/x-handlebars-template">
+         <div class="status"></div>
          <header>
-            <img src="media/avatar.png" alt="userimage" />
+            <img src="{{{icon}}}" alt="userimage" />
             <aside>
-               <h1 id="name"></h1>
-               <div class="info"><span id="age"></span>, <span id="weight"></span>, <span id="gender"></span></div>
+               <h1>{{{name}}}</h1>
+               <div class="info">{{ageInYears bday}}, {{{weight}}}, {{{gender}}}</div>
             </aside>
-            <div class="status"></div>
+            
          </header>
 
          <section>
-            <h3 id="today"></h3>
+            <h3>{{{today}}}</h3>
          </section>
          <article><div></div></article>
       </script>
