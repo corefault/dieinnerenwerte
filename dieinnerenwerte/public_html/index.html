@@ -33,8 +33,11 @@
                 Web Anwendung zu Verfügung zu stellen. 
                 <div class="flexslider center">
                    <ul class="slides">
-                       <li><img width="100%" src="style/images/first.png" alt="logo" /></li>
-                       <li><img width="100%" src="style/images/second.png" alt="logo" /></li>
+                       <li><img width="100%" src="style/images/1.jpg" alt="logo" /></li>
+                       <li><img width="100%" src="style/images/2.jpg" alt="logo" /></li>
+                       <li><img width="100%" src="style/images/3.jpg" alt="logo" /></li>
+                       <li><img width="100%" src="style/images/4.jpg" alt="logo" /></li>
+                       <li><img width="100%" src="style/images/5.jpg" alt="logo" /></li>
                    </ul>
                 </div>
                 <p class="center">Zunächst stellt sich die Frage, warum das Ganze ?
@@ -103,7 +106,9 @@ sudo apt-get install lighttpd</pre>
                 <p class="center">
                     Die Konfiguration des Lighttp Servers ist wie folgt.
                 </p>
-                <pre>sudo nano /etc/lighttpd/lighttpd.conf
+                <pre><span class="comment">Bearbeiten der Webserver Konfiguration</span>
+sudo nano /etc/lighttpd/lighttpd.conf
+<span class="comment">Folgene Inhalte einfügen bzw. anpassen</span>
 server.modules = (
     "mod_access",
     "mod_alias",
@@ -124,13 +129,16 @@ fastcgi.server = (
                     Danach muss die Schnittstelle eingerichtet werden. Ich habe einen USB auf Seriell Adapter verwendet, der automatisch erkannt wird. Dennoch sind einige Einstellungen notwendig.
                 </p>
                 <pre>
+<span class="comment">Bearbeiten des init scripts</span>
 sudo /etc/rc.local
+<span class="comment">Das USB/Seriell Device für alle Les- und Ausführbar machen</span>
 chmod o=rx /dev/ttyUSB0
+<span class="comment">Das Device auf Baudrate 19200 stellen</span>
 stty -F /dev/ttyUSB0 ispeed 19200 ospeed 19200
                 </pre>
 
                 <p class="center">
-                    Danach noch das WLAN konfigurieren. Wenn alles soweit funktioniert, kann die Überwachungssoftware unter /var/www installiert werden.
+                   Danach noch das WLAN oder LAN konfigurieren, je nachdem was man bevorzugt. Wenn alles soweit funktioniert, kann die Überwachungssoftware unter <strong>/var/www</strong> installiert werden.
                 </p>
             </div>
         </section>
@@ -140,7 +148,7 @@ stty -F /dev/ttyUSB0 ispeed 19200 ospeed 19200
                 <p class="center">
                     Alles hat in einen ersten Test gut funktioniert. Hierbei sind jedoch weitere Anforderungen und Ideen entstanden
                 <ul class="ml40">
-                    <li>Benutzerverwaltung</li>
+                    <li><strike>Benutzerverwaltung</strike></li>
                     <li>Alarme werden Serverseitig gespeichert</li>
                     <li>Abfrage der Alarme vom Server</li>
                     <li>Automatisches Einstellen der Grenzen vom Pulsoxymeter</li>

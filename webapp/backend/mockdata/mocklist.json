@@ -20,7 +20,13 @@
             "weight": "65kg",
             "gender": "male",
             "icon": "media/heinz.jpg"
-        }
-        
+        },
+        {
+            "name": "Daniel",
+            "bday": "1976-12-08",
+            "weight": "84kg",
+            "gender": "male",
+            "icon": "media/daniel.png"
+         }
     ]
 }
