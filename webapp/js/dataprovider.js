@@ -59,7 +59,7 @@ var dataprovider = (function() {
                     };
                   } else {
                       
-                    if (critical < 50) {
+                    if (critical < 60) {
                         st = "";
                     }
                     this.responseText = {
@@ -73,7 +73,7 @@ var dataprovider = (function() {
            });
            controller.trace("Started monitoring...");
            _running = true;
-           this.update();
+           this.update(100);
         },
         /**
          * stop monitoring
@@ -84,23 +84,21 @@ var dataprovider = (function() {
         },
         /**
          * update data in views.
+         * @param {type} del the delay to use. might be undefined
          */
-        update: function() {
+        update: function(del) {
+           var del = del || _delay;
            setTimeout(function() {
                $.ajax({
                    url:_url,
                    success: function(data) {
                        controller.update(data);
-                   },
-                   error: function(x,s,hdr){
-                      _running = false;
-                      $(".status").html("Fehler beim Lesen. Abbruch. (" + hdr +")");
                    }
                });
               if (_running !== false) {
                  dataprovider.update();
               }
-           }, _delay);
+           }, del);
         }
       };
 }) ();

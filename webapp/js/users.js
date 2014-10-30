@@ -13,7 +13,7 @@ var users = (function() {
             
             $.mockjax({
                url: "getusers",
-               proxy: "backend/users/mocklist.json"
+               proxy: "backend/mockdata/mocklist.json"
            });
            
            this.listOfUsers();
