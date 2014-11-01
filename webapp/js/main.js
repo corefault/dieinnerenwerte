@@ -31,11 +31,6 @@ $(document).ready(function() {
    
     // first get list of users
     users.initialize();
-   
-    // todo reqest for users
-    // todo make backend more robust to not throw an error in any case.
-   
-    //controller.initialize();
 });
 
 
