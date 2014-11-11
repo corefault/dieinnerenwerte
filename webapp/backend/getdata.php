@@ -26,27 +26,21 @@ function readFromDevice() {
    $buffer = "";
    $fp = fopen($device, "r");
    if ($fp) {
-//      stream_set_blocking($fp,0);
       $buffer = fgets ($fp);
    }
    fclose($fp);
-   if (strlen($buffer) > 0) {
-      $date = substr($buffer,0,18);
-      $spo2 = substr($buffer,21,3);
-      $pulse = substr($buffer,29,3);
-      $pa = substr($buffer,37,3);
-      $status = "";
-      if (strlen($buffer) >= 44) {
-          $status = substr($buffer,44,2); 
-      }
-      
-      $json = "{\"oxygen\": \"$spo2\", \"pulse\": \"$pulse\", \"pa\": \"$pa\", \"status\": \"$status\"}\n";
+
+   // use regular expressions
+   $pattern = "/(\w{2}\-\w{3}\-\w{2} \d{2}:\d{2}:\d{2})\s+(\d+)\s+(\d+)\s+(\d+)\s*(\w+|)/";
+   preg_match($pattern, $buffer, $matches);
+   
+   $length = count($matches);
+   if ($length == 6) {
+      $json = "{\"oxygen\": \"{$matches[2]}\", \"pulse\": \"{$matches[3]}\", \"pa\": \"{$matches[4]}\", \"status\": \"{$matches[5]}\"}\n";
       echo $json;
    } else {
       echo "{}";
    }
 }
-
 readFromDevice();
-
 ?>
