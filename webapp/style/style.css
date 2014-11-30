@@ -104,6 +104,11 @@ section {
       font-weight: normal;
       margin-top: -10px; }
 
+#lastquery {
+  font-size: 14px;
+  color: #ccc;
+  font-weight: 200; }
+
 article {
   background-color: #e8e8e8;
   border-top: 1px solid #c4c5c6;

@@ -38,7 +38,7 @@ var dataprovider = (function() {
         startMonitoring: function () {
             if (location.hash == "#debug") {
                 _url = "getdata";
-                _delay = 1000;
+                _delay = 4000;
                 document.title = "Die inneren Werte (Simulationmode)";
             }
             // we are mocking the ajax calls
@@ -50,11 +50,11 @@ var dataprovider = (function() {
                   var st    = mocktext[index];
                   
                   var critical = dataprovider.randomizer(0, 100);
-                  if (critical > 85) {
+                  if (critical > 90) {
                     this.responseText = {
                        oxygen: "---",
                        pulse:  "---",
-                       pa:     dataprovider.randomizer(1,254),
+                       pa:     dataprovider.randomizer(1, 254),
                        status: "SO"
                     };
                   } else {
@@ -65,7 +65,7 @@ var dataprovider = (function() {
                     this.responseText = {
                        oxygen: dataprovider.randomizer(75, 100),
                        pulse:  dataprovider.randomizer(65, 160),
-                       pa:     dataprovider.randomizer(1,254),
+                       pa:     dataprovider.randomizer(1, 254),
                        status: st
                     };
                 }

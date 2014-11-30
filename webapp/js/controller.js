@@ -74,6 +74,8 @@ var controller = (function() {
          * @param {type} val new values
          */
         update: function(val) {
+            var now = new Date();
+            $('#lastquery').html (now.toLocaleTimeString());
             _plugins[0].update(val.oxygen);
             _plugins[1].update(val.oxygen);
             _plugins[2].update(val.pulse);
