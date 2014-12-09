@@ -1,4 +1,4 @@
-# pulseWATCH
+# "Die inneren Werte"
 
 this is a concept for the dataport of the pulsoxymeter n-560. the data should be read in realtime from the dataport which uses the rs232 protocol.
 
