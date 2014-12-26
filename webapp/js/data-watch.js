@@ -1,41 +1,38 @@
-function dataWatch(name, icon, lower, upper) {
-    var opts = {title: name, icon: icon, min: lower, max: upper},
-        object = false,
-        error = opts.title + " alarm reported. The value {%1} is out of range {%2} and {%3}.",
-        counter = 0;
-    
+function dataWatch(parent, name, icon, lower, upper) {
+    var opts = {element: parent, title: name, icon: icon, min: lower, max: upper, color:"#555"},
+        vals = 0;
+
     this.initialize = function () {
-        var source   = $("#data-watch").html();
+        var source = $("#data-watch").html();
         var template = Handlebars.compile(source);
-        
-        var html    = template(opts);
-        object = $(html);
-        
+
+        var html = template(opts);
+
         // append to section
-        $('section').append(object);
-    },
-            
-    this.update = function (val) {
+        $(opts.element).html(html);
         
-        $('h1', object).html(val);
+        var chart = new SmoothieChart({grid:
+                                        {fillStyle:'#fff',
+                                         strokeStyle:'#fff',
+                                         borderVisible:false},
+                                        labels:{fillStyle:'#000',
+                                                disabled:true},
+                                    minValue:opts.min, maxValue:opts.max});
+        vals = new TimeSeries();
+        chart.addTimeSeries(vals, {lineWidth: 2,strokeStyle:opts.color});
+        chart.streamTo(document.getElementById("chart-" + opts.title), dataprovider._delay);
+    },
+    this.update = function (val) {
+        $(opts.element + " h1").html(val);
+        
+        vals.append(new Date().getTime(), val);
+
         if (val <= opts.min || val >= opts.max) {
-            object.addClass("alarm");
- 
-            controller.alarm();
-            
-            var warn = error;
-            warn = warn.replace("%1", val);
-            warn = warn.replace("%2", opts.min);
-            warn = warn.replace("%3", opts.max);
-            controller.trace(warn);
-            
-            // notification handling
-            counter++;
-            $('.notify span', object).html(counter);
-            $('.notify', object).show();
+            $(opts.element).addClass("alarm");
+            ui.alarm();
         } else {
-            object.removeClass("alarm");
+            $(opts.element).removeClass("alarm");
         }
     }
-    
+
 }

@@ -71,7 +71,6 @@ var dataprovider = (function() {
                 }
               }
            });
-           controller.trace("Started monitoring...");
            _running = true;
            this.update(100);
         },
@@ -80,7 +79,6 @@ var dataprovider = (function() {
          */
         stopMonitoring: function() {
            _running = false;
-           controller.trace("Stopped monitoring...");
         },
         /**
          * update data in views.
@@ -92,7 +90,7 @@ var dataprovider = (function() {
                $.ajax({
                    url:_url,
                    success: function(data) {
-                       controller.update(data);
+                       ui.update(data);
                    }
                });
               if (_running !== false) {

@@ -3,135 +3,129 @@
     Author     : corefault
 */
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif; }
-
-#user {
-  text-align: center;
-  margin-top: 100px;
-  font-size: 28px;
-  font-weight: 200; }
-  #user select {
-    font-size: 28px; }
-
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
 body {
-  margin: 80px auto;
-  width: 800px;
-  font-size: 13px; }
-
-.status {
-  text-transform: uppercase;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: #b00038;
-  font-size: 16px;
-  letter-spacing: -1px; }
-
+    font-size:14px;
+}
+/*====================================================
+ HEADER styling
+====================================================*/
 header {
-  position: relative; }
-  header img {
-    width: 84px;
-    height: 84px;
-    border-radius: 42px;
-    float: left; }
-  header aside {
-    float: left;
-    margin-left: 20px; }
-  header .info {
-    margin-top: -10px; }
-  header h1 {
-    font-size: 48px;
-    font-weight: normal;
-    color: #000; }
-  header span {
-    color: #a2a2a2;
-    font-size: 11px; }
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:38px;
+    background-color:#303030;
+    color:#fff;
+}
+header h1 {
+    font-size:28px;
+    font-weight:300;
+    float:left;
+    margin-left:40px;
+}
 
-section {
-  clear: both;
-  padding-top: 30px; }
-  section h3 {
-    font-size: 24px;
-    font-weight: 200;
-    color: #888;
-    padding-bottom: 10px;
-    margin-bottom: 30px; }
-  section h3:before {
-    content: "Today is "; }
-  section canvas, section svg {
-    float: left;
-    height: 110px;
-    width: 533.33333px; }
-  section .alarm {
-    background-color: #f42752 !important; }
-  section .notify {
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: #b00038;
-    display: none;
-    color: #fff;
-    font-size: 12px;
-    text-align: center; }
-    section .notify span {
-      margin-top: 6px;
-      display: block; }
-  section .cell {
-    margin-left: 10px;
-    margin-bottom: 2px;
-    padding: 10px;
-    background-color: #fefefe;
-    float: left;
-    width: 236.66667px;
-    position: relative;
-    height: 110px; }
-    section .cell img {
-      float: left;
-      margin-right: 20px; }
-    section .cell h1 {
-      font-size: 48px;
-      color: #999;
-      letter-spacing: -1px; }
-    section .cell h2 {
-      color: #777;
-      font-size: 20px;
-      font-weight: normal;
-      margin-top: -10px; }
+header ul {
+    float:right;
+    margin-right:40px;
+}
+header ul li {
+    list-style-type:none;
+    float:left;
+    padding:10px;
+    cursor:pointer;
+}
+header ul li:hover {
+    background-color:#fff;
+    color:#303030;
+}
+/*====================================================
+ CONTENT styling
+====================================================*/
+#content {
+    position:absolute;
+    top:38px;
+    left:0;
+    width:100%;
+    height:calc(100% - 38px);
+}
+#content .cell {
+    text-align:center;
+    float:left;
+    width:50%;
+    height:50%;
+    padding:0;
+    margin:0;
+    position:relative;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position:relative;
+}
+#content .cell canvas {
+    position:absolute;
+    bottom:-33px;
+    left:0;
+    height:100px;
+    width:100%;
+}
+#content .border-r {
+    border-right:1px solid #d9d9d9;
+}
+#content .border-b {
+    border-bottom:1px solid #d9d9d9;
+}
+#content .alarm {
+    background-color:#b00038;
+    opacity:0.5;
+}
 
-#lastquery {
-  font-size: 14px;
-  color: #ccc;
-  font-weight: 200; }
-
-article {
-  background-color: #e8e8e8;
-  border-top: 1px solid #c4c5c6;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 200px;
-  width: 100%;
-  font-size: 12px;
-  color: #777;
-  overflow-y: auto; }
-  article div {
-    padding: 10px; }
-
+#content .background {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: grayscale(0.8) opacity(0.2);
+}
+#content .cell h1 {
+    font-weight:bold;
+    font-size:48px;
+    color:#000;
+}
+#content .cell h2 {
+    font-weight:normal;
+    font-size:22px;
+}
+/*====================================================
+ common stylEs
+====================================================*/
+.mt-40 {
+    margin-top:40px;
+}
+/*====================================================
+ CRITICALstyle
+====================================================*/
 #critical {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #b00038;
-  opacity: 0.90; }
-  #critical div {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #b00038;
+    opacity: 0.90; 
+}
+#critical div {
     position: absolute;
     font-size: 64px;
     color: #eee;
@@ -141,44 +135,48 @@ article {
     left: 0;
     width: 100%;
     text-align: center;
-    display: block; }
-
+    display: block; 
+}
+/*====================================================
+ animation ahead :-)
+====================================================*/
 .element-animation {
-  animation: animationFrames ease-in-out 4s;
-  -webkit-animation: animationFrames ease-in-out 4s;
-  -moz-animation: animationFrames ease-in-out 4s;
-  -o-animation: animationFrames ease-in-out 4s;
-  -ms-animation: animationFrames ease-in-out 4s;
-  animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite; }
+    animation: animationFrames ease-in-out 4s;
+    -webkit-animation: animationFrames ease-in-out 4s;
+    -moz-animation: animationFrames ease-in-out 4s;
+    -o-animation: animationFrames ease-in-out 4s;
+    -ms-animation: animationFrames ease-in-out 4s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite; }
 
 @keyframes animationFrames {
-  0%, 100% {
-    transform: scaleX(0.8) scaleY(0.8); }
-  50% {
-    transform: scaleX(1.2) scaleY(1.2); } }
+    0%, 100% {
+        transform: scaleX(0.8) scaleY(0.8); }
+    50% {
+        transform: scaleX(1.2) scaleY(1.2); } 
+}
 @-moz-keyframes animationFrames {
-  0%,100% {
-    -moz-transform: scaleX(0.8) scaleY(0.8); }
-  50% {
-    -moz-transform: scaleX(1.2) scaleY(1.2); } }
+    0%,100% {
+        -moz-transform: scaleX(0.8) scaleY(0.8); }
+    50% {
+        -moz-transform: scaleX(1.2) scaleY(1.2); } }
 @-webkit-keyframes animationFrames {
-  0%,100% {
-    -webkit-transform: scaleX(0.8) scaleY(0.8); }
-  50% {
-    -webkit-transform: scaleX(1.2) scaleY(1.2); } }
+    0%,100% {
+        -webkit-transform: scaleX(0.8) scaleY(0.8); }
+    50% {
+        -webkit-transform: scaleX(1.2) scaleY(1.2); } 
+}
 @-o-keyframes animationFrames {
-  0%,100% {
-    -o-transform: scaleX(0.8) scaleY(0.8); }
-  50% {
-    -o-transform: scaleX(1.2) scaleY(1.2); } }
+    0%,100% {
+        -o-transform: scaleX(0.8) scaleY(0.8); }
+    50% {
+        -o-transform: scaleX(1.2) scaleY(1.2); } }
 @-ms-keyframes animationFrames {
-  0%,100% {
-    -ms-transform: scaleX(0.8) scaleY(0.8); }
-  50% {
-    -ms-transform: scaleX(1.2) scaleY(1.2); } }
+    0%,100% {
+        -ms-transform: scaleX(0.8) scaleY(0.8); }
+    50% {
+        -ms-transform: scaleX(1.2) scaleY(1.2); } }
 
-/*# sourceMappingURL=style.css.map */
