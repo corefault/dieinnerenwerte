@@ -187,8 +187,6 @@ if ($_REQUEST["q"] == "stat") {
     $s->statistic();
 } else if ($_REQUEST["q"] == "trend") {
     $s->trend($_REQUEST["val"]);
-} else if ($_REQUEST["q"] == "data") {
-    $s->data($_REQUEST["begin"], $_REQUEST["end"]);
 } else {
     echo "{}";
 }

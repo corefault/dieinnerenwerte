@@ -105,6 +105,8 @@ header ul li:hover {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+}
+#content .background-filter {
     -webkit-filter: grayscale(0.8) opacity(0.2);
 }
 #content .cell h1 {

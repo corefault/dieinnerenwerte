@@ -5,7 +5,7 @@ var ui = (function () {
         initialize: function () {
            
            Chart.defaults.global.responsive = true;
-           Chart.defaults.global.maintainAspectRatio = false;
+           Chart.defaults.global.maintainAspectRatio = true;
            Chart.defaults.global.tooltipFontSize = 12;
            
             $('header li').on("click", function () {
@@ -81,38 +81,7 @@ var ui = (function () {
                               json.datasets[1].data.push(data[i].maxValue);
                           }
                           var ctx   = $("#trend").get(0).getContext("2d");
-                          var trendchart = new Chart(ctx).Bar(json);
-                          
-                          $('#trend').on("click", function (evt) {
-                              var activePoints = trendchart.getBarsAtEvent(evt);
-                              // earch the label in json.datasets[0].label
-                              for (var i = 0; i < json.labels.length; i++) {
-                                  if (activePoints[0].label == json.labels[i]) {
-                                     var begin = data[i].beginIndex,
-                                         end   = data[i].endIndex;
-                                         $('#trend').hide();
-                                         $('#data').show();
-                                         
-                                         var uri = "q=data&begin=" + begin + "&end=" + end;
-                                         if (typeof filename !== "undefined") {
-                                             uri += "&file=" + filename;
-                                         }
-                                         $.getJSON ("/backend/segments.php",
-                                                    uri,
-                                                    function(data) {
-                                                        var area = {labels: data.labels,
-                                                                    datasets: [
-                                                                        {label: "Sättigung", data: data.sp},
-                                                                        {label: "Puls", data: data.pulse}
-                                                                    ]
-                                                                   };
-                                                        var ctx   = $("#data").get(0).getContext("2d");
-                                                        new Chart(ctx).Line(area);
-                                                    });
-                                         break;
-                                  }
-                              }
-                          });
+                          new Chart(ctx).Bar(json);
                       }
                      );            
         },
@@ -161,6 +130,9 @@ var ui = (function () {
         },
         
         update: function(val) {
+            
+            $('#still').css("background-image", "url(/backend/still.png)");
+            
             if (ui._plugins.length == 2) {
                 ui._plugins[0].update(val.oxygen);
                 ui._plugins[1].update(val.pulse);
