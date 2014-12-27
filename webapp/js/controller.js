@@ -3,6 +3,10 @@ var ui = (function () {
 
     return {
         initialize: function () {
+           
+           Chart.defaults.global.responsive = true;
+           Chart.defaults.global.maintainAspectRatio = false;
+           
             $('header li').on("click", function () {
                 var route = $(this).attr("data-route");
                 if (route === "live") {
@@ -40,16 +44,23 @@ var ui = (function () {
         },
         
         makeChartData: function (data) {
-          // prepare the charts
-          var labels = [];
-          var series = [];
+          // colours taken from 
+          // http://www.colourlovers.com/palette/379413/you_are_beautiful 
+          // http://www.colourlovers.com/palette/848743/(%E2%97%95_%E2%80%9D_%E2%97%95)
+          var colors = ['#351330','#424254','#64908A','#E8CAA4','#CC2A41','#490A3D','#BD1550','#E97F02','#F8CA00','#8A9B0F'],
+              index = 0,
+              pie = [];
+          
           for(var key in data){
              var val = data[key];
-             labels.push(key);
-             series.push(val);
+             pie.push ({label: key, value: val, color: colors[index]});
+             index++;
+             if (index >= colors.length) {
+                index = 0;
+             }
            }
           
-           return {labels: labels, series: [series]};
+           return pie;
         },
         
         trend: function () {
@@ -62,7 +73,18 @@ var ui = (function () {
                         var html = template(data);
                         $('#content').html(html);
                         
-                        new Chartist.Bar('#pulse', ui.makeChartData(data.stat.sp), {fullWidth: true, centerBars:true});
+                        // oxygen
+                        var ctx = $("#oxygen").get(0).getContext("2d");
+                        new Chart(ctx).Pie(ui.makeChartData(data.stat.sp));
+                        ctx = $("#pulse").get(0).getContext("2d");
+                        new Chart(ctx).Pie(ui.makeChartData(data.stat.pulse));
+                        ctx = $("#alarm").get(0).getContext("2d");
+                        new Chart(ctx).Pie(ui.makeChartData(data.stat.alert));
+                        
+                        // resize the container
+                        $('#oxygen').resize();
+                        $('#pulse').resize();
+                        $('#alarm').resize();
                      });
         },
  

@@ -66,7 +66,13 @@ header ul li:hover {
     -moz-box-sizing: border-box;
     position:relative;
 }
-#content .cell canvas {
+#content .col-4 {
+   width:25%;
+}
+#content .ma-10 {
+   margin:10px;
+}
+#content .cell canvas.live {
     position:absolute;
     bottom:-33px;
     left:0;
@@ -106,6 +112,13 @@ header ul li:hover {
 #content .cell h2 {
     font-weight:normal;
     font-size:22px;
+    color:#424254;
+    padding-bottom:5px;
+}
+#content .cell h3 {
+   color:#351330;
+   font-size:18px;
+   font-weight:normal;
 }
 /*====================================================
  common stylEs
@@ -179,4 +192,3 @@ header ul li:hover {
         -ms-transform: scaleX(0.8) scaleY(0.8); }
     50% {
         -ms-transform: scaleX(1.2) scaleY(1.2); } }
-

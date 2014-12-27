@@ -7,19 +7,17 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
         <link href="style/style.css" rel="stylesheet" type="text/css"/>
         <link href="style/animate.css" rel="stylesheet" type="text/css"/>
-        <link href="style/chartistjs.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
         <script src="js/libs/jquerymockjax/jquery-mockjax.js" type="text/javascript"></script>
         <script src="js/libs/handlebars.js/handlebars.js" type="text/javascript"></script>
         <script src="js/libs/smoothie/smoothie.js" type="text/javascript"></script>
         <script src="js/main.js" type="text/javascript"></script>
-        <script src="js/libs/chartist/chartist.js" type="text/javascript"></script>
-
+        <script src="js/libs/chartjs/chart.min.js" type="text/javascript"></script>
         <script id="data-watch" type="text/x-handlebars-template">
             <img src="media/{{{icon}}}" class="mt-40 element-animation" alt="icon" />
             <h1></h1>
             <h2>{{{title}}}</h2>
-            <canvas id="chart-{{{title}}}"></canvas>
+            <canvas class="live" id="chart-{{{title}}}"></canvas>
         </script>
 
         <script id="data-content" type="text/x-handlebars-template">
@@ -27,9 +25,9 @@
             <div class="background" style="background-image:url({{{icon}}});"></div>
             <h1 class="animated bounceInDown mt-40">{{{name}}}</h1>
             <h2 class="animated bounceInLeft">
-            {{ageInYears bday}}, 
-            {{{weight}}}, 
-            {{{gender}}}</h2>
+            {{ageInYears bday}}</h2>
+            <h3 class="animated zoomInRight">{{{weight}}}</h3> 
+            <h3 class="animated zoomInUp">{{{gender}}}</h3>
           </div>
           <div class="cell border-b" id="oxygen"></div>
           <div class="cell border-r" id="still">stillimage</div>
@@ -37,17 +35,28 @@
         </script>
         
         <script id="data-trend" type="text/x-handlebars-template">
-          <div class="cell border-r border-b">
+          <div class="cell border-r border-b col-4">
             <h1 class="animated zoomInDown mt-40">{{{duration}}}</h1>
             <h2 class="animated bounceInLeft">{{{beginDate}}}</h2>
             <h2 class="animated bounceInRight">{{{endDate}}}</h2>
-            <h2 class="animated bounceInUp">{{{amount}}} Ergebnisse</h2>
+            <h2 class="animated bounceInUp"><strong>{{{amount}}}</strong> Ergebnisse</h2>
           </div>
-          <div class="cell border-b">
-            <div class="ct-chart" id="pulse"></div>
-           </div>
-          <div class="cell border-r">do not know</div>
-          <div class="cell">do not know</div>
+          <div class="cell border-b border-r col-4">
+           
+            <div class="ma-10">
+           <h2 class="animated bounceInLeft">Sättigung</h2> 
+           <canvas id="oxygen"></canvas></div>
+          </div>
+          <div class="cell border-r border-b col-4">
+            <div class="ma-10">
+            <h2 class="animated bounceInDown">Pulse</h2>
+            <canvas id="pulse"></canvas></div>
+          </div>
+          <div class="cell border-b col-4">
+            <div class="ma-10">
+           <h2 class="animated bounceInRight">Alarm</h2>  
+           <canvas id="alarm"></canvas></div>
+          </div>
         </script>
     </head>
     <body>
