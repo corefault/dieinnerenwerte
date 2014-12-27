@@ -11,6 +11,7 @@
 class Segmentation {
 
     var $lines = array(),
+            $filename = "",
             $ranges_sp = array(),
             $ranges_pulse = array(),
             $range_alarm = array(),
@@ -29,6 +30,7 @@ class Segmentation {
      * @param $file the filename or empty for last one
      */
     function initialize($file) {
+        $this->filename = $file;
         $this->lines = file($file);
     }
 
@@ -36,6 +38,15 @@ class Segmentation {
      * get lastest file 
      */
     function lastfile() {
+        $list = $this->files();
+        return $list[count($list)-1];
+    }
+    
+    /**
+     * read directory and return list of all files
+     * @return list of files
+     */
+    function files () {
         $dir = ".";
         $list = array();
         if ($dh = opendir($dir)) {
@@ -48,8 +59,7 @@ class Segmentation {
             }
             closedir($dh);
         }
-        
-        return $list[count($list)-1];
+        return $list;
     }
 
     /**
@@ -74,6 +84,7 @@ class Segmentation {
         $json = [];
         for ($i = $from; $i < $to; $i++) {
             list($date, $sp, $beat, $alert) = explode(",", $this->lines[$i]);
+            $json["labels"][] = $i;
             $json["sp"][] = (int) $sp;
             $json["pulse"][] = (int) $beat;
         }
@@ -157,16 +168,29 @@ class Segmentation {
             "alert" => $this->ranges_alarm,
             "pulse" => $this->ranges_pulse);
 
+        $json["files"] = $this->files();
+        $json["current"] = $this->filename;
         echo json_encode($json, JSON_PRETTY_PRINT);
     }
 
 }
 
 $s = new Segmentation();
-$file = $s->lastfile();
+if (isset ($_REQUEST["file"])) {
+    $file = $_REQUEST["file"];
+} else {
+    $file = $s->lastfile();
+}
 $s->initialize($file);
-$s->parseSegments();
-$s->statistic();
-
-//  $s->trend(200);
+if ($_REQUEST["q"] == "stat") {
+    $s->parseSegments();
+    $s->statistic();
+} else if ($_REQUEST["q"] == "trend") {
+    $s->trend($_REQUEST["val"]);
+} else if ($_REQUEST["q"] == "data") {
+    $s->data($_REQUEST["begin"], $_REQUEST["end"]);
+} else {
+    echo "{}";
+}
+unset($s);
 ?>

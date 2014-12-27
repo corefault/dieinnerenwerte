@@ -9,13 +9,13 @@ document.write('<script src="js/dataprovider.js"></script>');
  */
 $(document).ready(function () {
     $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
-        console.log("Error " + settings.url + ", " + thrownError);
+        console.log("Error " + settings.url + ", " + jqxhr.responseText);
     });
 
     // install some Handlebars extensions
     Handlebars.registerHelper("ageInYears", function (bday) {
         var age = new Date(bday);
-        var today = new Date();
+        var today = new Date();''
 
         var diff = today.getTime() - age.getTime();
         var day = 1000 * 60 * 60 * 24;

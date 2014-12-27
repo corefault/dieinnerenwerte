@@ -39,23 +39,34 @@
             <h1 class="animated zoomInDown mt-40">{{{duration}}}</h1>
             <h2 class="animated bounceInLeft">{{{beginDate}}}</h2>
             <h2 class="animated bounceInRight">{{{endDate}}}</h2>
-            <h2 class="animated bounceInUp"><strong>{{{amount}}}</strong> Ergebnisse</h2>
+            <h3 class="animated bounceInUp"><strong>{{{amount}}}</strong> Ergebnisse</h3>
+            <select class="mt-10" id="files">
+            {{#each files}}
+                <option>{{{this}}}</option>
+            {{/each}}
+            </select>
           </div>
           <div class="cell border-b border-r col-4">
-           
-            <div class="ma-10">
-           <h2 class="animated bounceInLeft">Sättigung</h2> 
+           <div class="ma-10">
+           <h2 class="mb-10 animated bounceInLeft">Sättigung</h2> 
            <canvas id="oxygen"></canvas></div>
           </div>
           <div class="cell border-r border-b col-4">
             <div class="ma-10">
-            <h2 class="animated bounceInDown">Pulse</h2>
+            <h2 class="mb-10 animated bounceInDown">Pulse</h2>
             <canvas id="pulse"></canvas></div>
           </div>
           <div class="cell border-b col-4">
             <div class="ma-10">
-           <h2 class="animated bounceInRight">Alarm</h2>  
+           <h2 class="mb-10 animated bounceInRight">Alarm</h2>  
            <canvas id="alarm"></canvas></div>
+          </div>
+          <div class="cell fullwidth">
+            <div class="ma-10">
+           <h2 class="mb-10 animated bounceInDown">Trend</h2>  
+           <canvas id="trend"></canvas>
+           <canvas id="data" style="display:none"></canvas>
+           </div>
           </div>
         </script>
     </head>

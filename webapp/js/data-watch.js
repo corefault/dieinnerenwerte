@@ -29,9 +29,11 @@ function dataWatch(parent, name, icon, lower, upper) {
 
         if (val <= opts.min || val >= opts.max) {
             $(opts.element).addClass("alarm");
+            $("#chart-" + opts.title).hide();
             ui.alarm();
         } else {
             $(opts.element).removeClass("alarm");
+            $("#chart-" + opts.title).show();
         }
     }
 

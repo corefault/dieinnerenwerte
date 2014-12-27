@@ -6,6 +6,7 @@ var ui = (function () {
            
            Chart.defaults.global.responsive = true;
            Chart.defaults.global.maintainAspectRatio = false;
+           Chart.defaults.global.tooltipFontSize = 12;
            
             $('header li').on("click", function () {
                 var route = $(this).attr("data-route");
@@ -63,10 +64,69 @@ var ui = (function () {
            return pie;
         },
         
-        trend: function () {
+        trendParts: function(filename, value) {
+            // get trend information
+            var query = "q=trend&val=" + value;
+            if (typeof filename !== "undefined") {
+                query += "&file=" + filename;
+            }
+            
+            $.getJSON("/backend/segments.php",
+                      query,
+                      function(data) {
+                          var json = {labels: [], datasets: [{label: "minimum", fillColor: '#8A9B0F', data: []},{label: "maximum", fillColor: '#490A3D', data: []}]};
+                          for (var i = 0; i < data.length; i++) {
+                              json.labels.push(data[i].from.substr(11));
+                              json.datasets[0].data.push(data[i].minValue);
+                              json.datasets[1].data.push(data[i].maxValue);
+                          }
+                          var ctx   = $("#trend").get(0).getContext("2d");
+                          var trendchart = new Chart(ctx).Bar(json);
+                          
+                          $('#trend').on("click", function (evt) {
+                              var activePoints = trendchart.getBarsAtEvent(evt);
+                              // earch the label in json.datasets[0].label
+                              for (var i = 0; i < json.labels.length; i++) {
+                                  if (activePoints[0].label == json.labels[i]) {
+                                     var begin = data[i].beginIndex,
+                                         end   = data[i].endIndex;
+                                         $('#trend').hide();
+                                         $('#data').show();
+                                         
+                                         var uri = "q=data&begin=" + begin + "&end=" + end;
+                                         if (typeof filename !== "undefined") {
+                                             uri += "&file=" + filename;
+                                         }
+                                         $.getJSON ("/backend/segments.php",
+                                                    uri,
+                                                    function(data) {
+                                                        var area = {labels: data.labels,
+                                                                    datasets: [
+                                                                        {label: "Sättigung", data: data.sp},
+                                                                        {label: "Puls", data: data.pulse}
+                                                                    ]
+                                                                   };
+                                                        var ctx   = $("#data").get(0).getContext("2d");
+                                                        new Chart(ctx).Line(area);
+                                                    });
+                                         break;
+                                  }
+                              }
+                          });
+                      }
+                     );            
+        },
+        
+        trend: function (filename) {
+            var data = "q=stat";
+            
+            if (typeof filename !== "undefined") {
+                data += "&file=" + filename;
+            }
             dataprovider.stopMonitoring();
             ui._plugins = [];
             $.getJSON("/backend/segments.php",
+                      data,  
                     function (data) {
                         var source = $("#data-trend").html();
                         var template = Handlebars.compile(source);
@@ -74,18 +134,25 @@ var ui = (function () {
                         $('#content').html(html);
                         
                         // oxygen
-                        var ctx = $("#oxygen").get(0).getContext("2d");
-                        new Chart(ctx).Pie(ui.makeChartData(data.stat.sp));
-                        ctx = $("#pulse").get(0).getContext("2d");
-                        new Chart(ctx).Pie(ui.makeChartData(data.stat.pulse));
-                        ctx = $("#alarm").get(0).getContext("2d");
-                        new Chart(ctx).Pie(ui.makeChartData(data.stat.alert));
+                        var ctx   = $("#oxygen").get(0).getContext("2d");
+                        var chart = new Chart(ctx).Pie(ui.makeChartData(data.stat.sp));
                         
-                        // resize the container
-                        $('#oxygen').resize();
-                        $('#pulse').resize();
-                        $('#alarm').resize();
-                     });
+                        ctx = $("#pulse").get(0).getContext("2d");
+                        chart = new Chart(ctx).Pie(ui.makeChartData(data.stat.pulse));
+                        
+                        ctx = $("#alarm").get(0).getContext("2d");
+                        chart = new Chart(ctx).Pie(ui.makeChartData(data.stat.alert));
+                        
+                        ui.trendParts(filename, 450);
+                        
+                        // select current file
+                        $('#files').val(data.current);
+                        $('#files').off("change");
+                        $('#files').on("change", function () {
+                           ui.trend($(this).val()); 
+                        });
+                    });
+                     
         },
  
         alarm: function() {
