@@ -81,7 +81,7 @@ var ui = (function () {
                               json.datasets[1].data.push(data[i].maxValue);
                           }
                           var ctx   = $("#trend").get(0).getContext("2d");
-                          new Chart(ctx).Bar(json);
+                          new Chart(ctx).Bar(json, {maintainAspectRatio:false});
                       }
                      );            
         },
@@ -130,9 +130,12 @@ var ui = (function () {
         },
         
         update: function(val) {
-            
-            $('#still').css("background-image", "url(/backend/still.png)");
-            
+            var now = new Date().getTime();
+            var bgImage = new Image();
+            bgImage.src = "/backend/still.jpg?_=" + now;
+            bgImage.onload = function(e) {
+                $('#still').css("background-image", "url("+bgImage.src+")");
+            };
             if (ui._plugins.length == 2) {
                 ui._plugins[0].update(val.oxygen);
                 ui._plugins[1].update(val.pulse);

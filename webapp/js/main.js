@@ -1,8 +1,8 @@
-/*document.write('<script src="js/svg.js"></script>');*/
-
 document.write('<script src="js/data-watch.js"></script>');
 document.write('<script src="js/controller.js"></script>');
 document.write('<script src="js/dataprovider.js"></script>');
+
+var DEBUGMODE = false;
 
 /**
  * entry point after DOM ready
@@ -11,6 +11,10 @@ $(document).ready(function () {
     $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
         console.log("Error " + settings.url + ", " + jqxhr.responseText);
     });
+
+    if (location.hash == "#debug") {
+        DEBUGMODE = true;
+    }
 
     // install some Handlebars extensions
     Handlebars.registerHelper("ageInYears", function (bday) {

@@ -4,7 +4,7 @@
         <title>Die inneren Werte</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,300' rel='stylesheet' type='text/css'>
         <link href="style/normal.css" rel="stylesheet" type="text/css"/>
         <script src="js/libs/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="js/libs/html5shiv/html5.min.js" type="text/javascript"></script>
@@ -22,7 +22,6 @@
                     <li><a href="#arch">Funktionen</a></li>
                     <li><a href="#hw">Bilder</a></li>
                     <li><a href="#installation">Installation</a></li>
-                    <li><a href="#todo">Ausblick</a></li>
                 </ul>
             </div>
         </header>
@@ -31,14 +30,14 @@
             <div class="container first cut">
                 Die Idee zu diesem Projekt kommt aus dem privaten Umfeld. 
                 Grob gesagt, geht es darum, Daten von einem Pulsoxymeter auszulesen und diese in einer 
-                Web Anwendung zu Verfügung zu stellen. 
+                Web Anwendung zu Verfügung zu stellen. <br/><br/>
                 <div class="flexslider center">
                    <ul class="slides">
-                       <li><img width="100%" src="style/images/1.jpg" alt="logo" /></li>
-                       <li><img width="100%" src="style/images/2.jpg" alt="logo" /></li>
-                       <li><img width="100%" src="style/images/3.jpg" alt="logo" /></li>
-                       <li><img width="100%" src="style/images/4.jpg" alt="logo" /></li>
-                       <li><img width="100%" src="style/images/5.jpg" alt="logo" /></li>
+                       <li>Live Daten<br/><img width="100%" src="style/images/1.png" alt="logo" /></li>
+                       <li>Überprüfen der Grenzwerte mit Alarm<br/><img width="100%" src="style/images/2.png" alt="logo" /></li>
+                       <li>Kritischer Alarm<br/><img width="100%" src="style/images/3.png" alt="logo" /></li>
+                       <li>Trendanalyse der Werte.<br/><img width="100%" src="style/images/4.png" alt="logo" /></li>
+                       <li>Min/Max Anzeige<br/><img width="100%" src="style/images/5.png" alt="logo" /></li>
                    </ul>
                 </div>
                 <p class="center">Zunächst stellt sich die Frage, warum das Ganze ?
@@ -69,11 +68,19 @@
                 </div>
                 <div class="columns">
                     <img src="style/images/alarm.png" />
-                    Grenzüberwachung mit automatischen Alarm. Anzahl der Alarme wird protokolliert und angezeigt.
+                    Grenzüberwachung mit automatischen Alarm. 
                 </div>
                 <div class="columns">
                     <img src="style/images/trace.png" />
-                    Alles wird protokolliert und in einem separaten Bereich dargestellt.
+                    Alles wird protokolliert.
+                </div>
+                <div class="columns">
+                    <img src="style/images/camera.png" />
+                    Aktuelles Bild von integrierter Kamera (alle 4s aktualisiert)
+                </div>
+                <div class="columns">
+                    <img src="style/images/pebble.png" />
+                    Anwendung für Pebble Smartwatch verfügbar. Zeigt Werte und gibt Vibrationsalarm bei Alarm.
                 </div>
 
                 <br class="clearfix" />
@@ -159,11 +166,15 @@ fastcgi.server = (
                 </p>
                 <pre>
 <span class="comment">Bearbeiten des init scripts</span>
-sudo /etc/rc.local
+sudo nano /etc/rc.local
 <span class="comment">Das USB/Seriell Device für alle Les- und Ausführbar machen</span>
 chmod o=rx /dev/ttyUSB0
 <span class="comment">Das Device auf Baudrate 19200 stellen</span>
 stty -F /dev/ttyUSB0 ispeed 19200 ospeed 19200
+<span class="comment">backend einrichten und prozesse starten</span>
+chmod 0777 /var/www/backend
+chmod +x /var/www/backend/*.sh
+/var/www/backend/worker.sh &
                 </pre>
 
                 <p class="center">
@@ -171,25 +182,9 @@ stty -F /dev/ttyUSB0 ispeed 19200 ospeed 19200
                 </p>
             </div>
         </section>
-        <section id="todo">
-            <div class="container">
-                <h2>Ausblick</h2>
-                <p class="center">
-                    Alles hat in einen ersten Test gut funktioniert. Hierbei sind jedoch weitere Anforderungen und Ideen entstanden
-                <ul class="ml40">
-                    <li><strike>Benutzerverwaltung</strike></li>
-                    <li>Alarme werden Serverseitig gespeichert</li>
-                    <li>Abfrage der Alarme vom Server</li>
-                    <li>Automatisches Einstellen der Grenzen vom Pulsoxymeter</li>
-                    <li>Kameraüberwachung am Raspberry Pi</li>
-                </ul>
-                </p>
-                <br class="clearfix" />
-            </div>
-        </section>
 
         <footer>
-            Copyright 2014 Daniel Kagemann
+            Copyright 2015 Daniel Kagemann
         </footer>
 
     </body>

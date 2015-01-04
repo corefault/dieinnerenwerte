@@ -36,7 +36,7 @@ var dataprovider = (function() {
          * start monitoring.
          */
         startMonitoring: function () {
-            if (location.hash == "#debug") {
+            if (DEBUGMODE) {
                 _url = "getdata";
                 _delay = 4000;
                 document.title = "Die inneren Werte (Simulationmode)";
@@ -87,8 +87,14 @@ var dataprovider = (function() {
         update: function(del) {
            var del = del || _delay;
            setTimeout(function() {
+               var query = _url;
+               var now = new Date().getTime();
+               if (!DEBUGMODE) {
+                   query += "?_=" + now;
+               }
+
                $.ajax({
-                   url:_url,
+                   url:query,
                    success: function(data) {
                        ui.update(data);
                    }
