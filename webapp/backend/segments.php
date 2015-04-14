@@ -11,7 +11,7 @@
 class Segmentation {
 
     var $lines = array(),
-            $filename = "",
+        $filename = "",
             $ranges_sp = array(),
             $ranges_pulse = array(),
             $range_alarm = array(),

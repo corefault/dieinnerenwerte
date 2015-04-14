@@ -1,0 +1,69 @@
+/* 
+    Created on : 08.04.2015, 21:45:00
+    Author     : corefault
+*/
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,700);
+
+* {
+   padding:0;
+   margin:0;
+   font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+   font-size:15px;
+}
+
+header {
+   background-color:#303030;
+   position:fixed;
+   left:0;
+   top:0;
+   width:100%;
+   height:80%;
+}
+header .bg {
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
+   background-image: url('../media/background.jpg');
+   background-repeat: no-repeat;
+   background-position: center;
+   height:100%;
+   width:100%;
+}
+
+header .text {
+   position:absolute;
+   left:100px;
+   top:40px;
+   font-size:24px;
+   font-weight:300;
+   color:#fff;
+   background-color:#303030;
+   opacity:0.8;
+   padding:10px;
+}
+
+ul {
+   width:100%;
+   top: 80%;
+   height: 20%;
+   position: absolute;
+}
+
+ul li {
+   list-style-type:none;
+   float:left;
+   width:50%;
+   text-align:center;
+   font-size:48px;
+   margin-top: 5%;
+}
+
+ul li span {
+   display:block;
+   text-transform: uppercase;
+   color:#646464;
+   font-size:12px;
+}
