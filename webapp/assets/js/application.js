@@ -18,6 +18,22 @@ angular.module("watchApp", [])
               $scope.update(4000);
            });
         })
+        .controller("sleepController", function($scope, $http) {
+           $scope.update = function(delay) {
+               setTimeout(function () {
+               $http.get("/backend/sleep.php")
+                  .success(function(data, status, headers, config) {
+                     $scope.value = data;
+                     $scope.update(10000);
+               })
+               .error(function(data, status, headers, config) {
+                  $scope.update(10000);
+               });
+            }, delay);
+           };
+   
+           $scope.update(1000);
+        })
         .controller("valueController", function($scope, $http) {
            
            $scope.last = false;

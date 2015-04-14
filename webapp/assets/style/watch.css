@@ -20,7 +20,7 @@ header {
    left:0;
    top:0;
    width:100%;
-   height:80%;
+   height:calc(100% - 120px);
 }
 header .bg {
    -webkit-background-size: cover;
@@ -47,23 +47,38 @@ header .text {
 
 ul {
    width:100%;
-   top: 80%;
-   height: 20%;
+   bottom: 0;
+   height: 120px;
    position: absolute;
 }
 
 ul li {
    list-style-type:none;
    float:left;
-   width:50%;
+   width:33%;
    text-align:center;
    font-size:48px;
-   margin-top: 5%;
+   margin-top:10px;
 }
+
 
 ul li span {
    display:block;
    text-transform: uppercase;
    color:#646464;
    font-size:12px;
+}
+
+ul li.small {
+   font-size:20px;
+}
+
+ul li.small span {
+   color:#646464;
+   display:initial;
+}
+
+/* for mobile devices: orientation dependent */
+@media all and (orientation:portrait) {
+   
 }

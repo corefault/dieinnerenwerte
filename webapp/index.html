@@ -16,6 +16,11 @@
       </header>
       <ul ng-controller="valueController">
          <li>{{value.oxygen}} <img src="/assets/media/{{value.otrend}}.png" /><span>oxygen</span></li>
+         <li ng-controller="sleepController" class="small">
+            {{value.awake}} <span>awake</span><br/>
+            {{value.sleep}} <span>sleeping</span><br/>
+            {{value.deep}} <span>deep sleep</span>
+         </li>
          <li>{{value.pulse}} <img src="/assets/media/{{value.ptrend}}.png" /><span>pulse</span></li>
       </ul>
       
