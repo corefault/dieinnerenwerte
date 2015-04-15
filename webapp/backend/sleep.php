@@ -31,14 +31,6 @@ class Sleep {
     }
 
     /**
-     * get lastest file 
-     */
-    function lastfile() {
-        $list = $this->files();
-        return $list[count($list)-1];
-    }
-    
-    /**
      * read directory and return list of all files
      * @return list of files
      */
@@ -127,9 +119,8 @@ $s = new Sleep();
 if (isset ($_REQUEST["file"])) {
     $file = $_REQUEST["file"];
 } else {
-    $file = $s->lastfile();
+    $file = "./today.data";
 }
 $s->initialize($file);
 $s->phase();
 unset($s);
-?>

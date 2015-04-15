@@ -4,9 +4,9 @@
  * write data to file
  * @param type $msg the message to write
  */
-function protocol($msg) {
-    $file = date("Ymd");
-    $fp = @fopen("./$file.txt", "a+");
+function writeToFile($msg) {
+    $file = "today.data";
+    $fp = @fopen("./$file", "a+");
     if ($fp) {
         fwrite($fp, $msg);
         fclose($fp);
@@ -34,11 +34,23 @@ function readFromDevice() {
    $length = count($matches);
    if ($length == 6) {
       $ts = date("U");
+      
+      if ($last == 0) {
+         $last = $ts;
+      } else {
+         if (($ts - $last) > 60) {
+            rename("today.data", date("Ymd") . ".txt");
+            unlink("today.data");
+         }
+         $last = $ts;
+      }
+      
       $json = "$ts,{$matches[2]},{$matches[3]},{$matches[5]}\n";
-      protocol($json);
+      writeToFile($json);
    }
 }
 
+$last = 0;
 for(;;) {
 	readFromDevice();
 	sleep(1);
