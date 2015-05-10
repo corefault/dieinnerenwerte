@@ -87,6 +87,12 @@ class Sleep {
         }
         
         // smart date
+        
+        $total = $json["awake"] + $json["sleep"] + $json["deep"];
+        $json["p_awake"] = ($json["awake"]*100)/$total;
+        $json["p_sleep"] = ($json["sleep"]*100)/$total;
+        $json["p_deep"] = ($json["deep"]*100)/$total;
+        
         $json["awake"] = $this->smartdate($json["awake"]);
         $json["sleep"] = $this->smartdate($json["sleep"]);
         $json["deep"] = $this->smartdate($json["deep"]);

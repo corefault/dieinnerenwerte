@@ -14,6 +14,14 @@ function writeToFile($msg) {
 }
 
 /**
+ * change to new today file
+ */
+function changeFile () {
+   rename("today.data", date("Ymd") . ".txt");
+   unlink("today.data");
+}
+
+/**
  * reading data from serial port and
  * translate data into JSON
  */
@@ -34,25 +42,12 @@ function readFromDevice() {
    $length = count($matches);
    if ($length == 6) {
       $ts = date("U");
-      
-      if ($last == 0) {
-         $last = $ts;
-      } else {
-         if (($ts - $last) > 60) {
-            rename("today.data", date("Ymd") . ".txt");
-            unlink("today.data");
-         }
-         $last = $ts;
-      }
-      
       $json = "$ts,{$matches[2]},{$matches[3]},{$matches[5]}\n";
       writeToFile($json);
    }
 }
 
-$last = 0;
 for(;;) {
 	readFromDevice();
 	sleep(1);
 }
-?>

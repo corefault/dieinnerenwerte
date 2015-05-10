@@ -9,7 +9,8 @@
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
-  line-height: 24px; }
+  line-height: 24px; 
+}
 
 header {
   position: fixed;
@@ -24,7 +25,9 @@ header {
   font-size: 38px;
   padding-top: 20px;
   padding-bottom: 20px;
-  z-index: 10000; }
+  z-index: 10000; 
+  letter-spacing:-1px;
+}
   header ul {
     float: right; }
     header ul li {
@@ -93,3 +96,4 @@ section {
     float: right; }
 
 /*# sourceMappingURL=normal.css.map */
+

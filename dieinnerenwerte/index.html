@@ -8,12 +8,11 @@
         <link href="style/normal.css" rel="stylesheet" type="text/css"/>
         <script src="js/libs/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="js/libs/html5shiv/html5.min.js" type="text/javascript"></script>
-        <script src="js/libs/flexslider/jquery.flexslider-min.js" type="text/javascript"></script>
+        <script src="js/libs/flexslider/flexslider.js" type="text/javascript"></script>
         <script src="js/root.js" type="text/javascript"></script>
     </head>
 
     <body>
-
         <header>
             <div class="container">
                 die inneren werte
@@ -21,7 +20,6 @@
                     <li><a href="#idea">Übersicht</a></li>
                     <li><a href="#arch">Funktionen</a></li>
                     <li><a href="#hw">Bilder</a></li>
-                    <li><a href="#installation">Installation</a></li>
                 </ul>
             </div>
         </header>
@@ -30,21 +28,14 @@
             <div class="container first cut">
                 Die Idee zu diesem Projekt kommt aus dem privaten Umfeld. 
                 Grob gesagt, geht es darum, Daten von einem Pulsoxymeter auszulesen und diese in einer 
-                Web Anwendung zu Verfügung zu stellen. <br/><br/>
-                <div class="flexslider center">
-                   <ul class="slides">
-                       <li>Live Daten<br/><img width="100%" src="style/images/1.png" alt="logo" /></li>
-                       <li>Überprüfen der Grenzwerte mit Alarm<br/><img width="100%" src="style/images/2.png" alt="logo" /></li>
-                       <li>Kritischer Alarm<br/><img width="100%" src="style/images/3.png" alt="logo" /></li>
-                       <li>Trendanalyse der Werte.<br/><img width="100%" src="style/images/4.png" alt="logo" /></li>
-                       <li>Min/Max Anzeige<br/><img width="100%" src="style/images/5.png" alt="logo" /></li>
-                   </ul>
+                Web Anwendung zur Verfügung zu stellen. <br/><br/>
+                <div class="center">
+                   <img src="style/images/background.png" width="100%" />
                 </div>
                 <p class="center">Zunächst stellt sich die Frage, warum das Ganze ?
                     Der Pulsoxymeter überwacht doch schon die Werte und zeigt diese an. 
-                    Auch ein Alarm wird akustisch gemeldet. Hier ist allerdings schon das erste Problem. oft ist der Alarm nur schlecht oder sogar gar nicht zu hören.
-                    Es gibt je nach Hersteller hier bereits Lösungen wie Rufanlage, etc.<br/>
-                    Ich wollte eine Lösung, bei der ich einen akustischen Alarm höre und die aktuellen Werte einsehen kann. 
+                    Auch ein Alarm wird akustisch gemeldet. Hier ist allerdings schon das erste Problem. Oft ist der Alarm nur schlecht oder gar nicht zu hören.
+                    Ich wollte eine Lösung, bei der ich einen akustischen Alarm höre und die aktuellen Werte einsehen kann, inklusive Kamerabild.
                 </p>
             </div>
         </section>
@@ -65,14 +56,6 @@
                 <div class="columns">
                     <img src="style/images/chart.png" />
                     Visualisierung der Werte.
-                </div>
-                <div class="columns">
-                    <img src="style/images/alarm.png" />
-                    Grenzüberwachung mit automatischen Alarm. 
-                </div>
-                <div class="columns">
-                    <img src="style/images/trace.png" />
-                    Alles wird protokolliert.
                 </div>
                 <div class="columns">
                     <img src="style/images/camera.png" />
@@ -119,10 +102,6 @@
                           <img src="style/images/rasp6.jpg" /><br/>
                           Der Pulsoxy im Betrieb.
                       </li>
-                      <li>
-                          <img src="style/images/rasp8.jpg" /><br/>
-                          Auf dem Smart TV funktioniert es auch.
-                      </li>
                        <li>
                           <img src="style/images/rasp9.jpg" /><br/>
                           Anwendung speziell für Pebble smartwatch.
@@ -131,59 +110,6 @@
                    
                 </div>
                 <br class="clearfix" />
-            </div>
-        </section>
-        <section id="installation">
-            <div class="container cut">
-                <h2>Installation</h2>
-                <p class="center">
-                    Auf dem Raspberry Pi sind einige Schritte notwendig, um das System vorzubereiten. Nachdem das System installiert ist, müssen zunächst einige Softwarepakete installiert werden.
-                </p>
-                
-                <pre><span class="comment">Installation des Web Servers lighttpd</span>
-sudo apt-get install lighttpd</pre>
-
-                <p class="center">
-                    Die Konfiguration des Lighttp Servers ist wie folgt.
-                </p>
-                <pre><span class="comment">Bearbeiten der Webserver Konfiguration</span>
-sudo nano /etc/lighttpd/lighttpd.conf
-<span class="comment">Folgene Inhalte einfügen bzw. anpassen</span>
-server.modules = (
-    "mod_access",
-    "mod_alias",
-    "mod_compress",
-    "mod_redirect",
-    "mod_fastcgi"
-)
-...
-fastcgi.server = (
-  ".php" =>
-  (( "host" => "127.0.0.1",
-     "port" => 1026,
-      "bin-path" => "/usr/local/bin/php"
-  )) 
-)
-                </pre>
-                <p class="center">
-                    Danach muss die Schnittstelle eingerichtet werden. Ich habe einen USB auf Seriell Adapter verwendet, der automatisch erkannt wird. Dennoch sind einige Einstellungen notwendig.
-                </p>
-                <pre>
-<span class="comment">Bearbeiten des init scripts</span>
-sudo nano /etc/rc.local
-<span class="comment">Das USB/Seriell Device für alle Les- und Ausführbar machen</span>
-chmod o=rx /dev/ttyUSB0
-<span class="comment">Das Device auf Baudrate 19200 stellen</span>
-stty -F /dev/ttyUSB0 ispeed 19200 ospeed 19200
-<span class="comment">backend einrichten und prozesse starten</span>
-chmod 0777 /var/www/backend
-chmod +x /var/www/backend/*.sh
-/var/www/backend/worker.sh &
-                </pre>
-
-                <p class="center">
-                   Danach noch das WLAN oder LAN konfigurieren, je nachdem was man bevorzugt. Wenn alles soweit funktioniert, kann die Überwachungssoftware unter <strong>/var/www</strong> installiert werden.
-                </p>
             </div>
         </section>
 

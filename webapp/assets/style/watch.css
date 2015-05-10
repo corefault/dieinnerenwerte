@@ -70,14 +70,41 @@ ul li span {
 
 ul li.small {
    font-size:16px;
+   font-weight:300;
 }
 
 ul li.small span {
-   color:#646464;
    display:initial;
+   background-color:#878787;
+   padding:2px 4px;
+   color:#fff;
 }
 
-/* for mobile devices: orientation dependent */
-@media all and (orientation:portrait) {
-   
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+
+   header .text {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 18px;
+      font-weight: 300;
+      color: #fff;
+      background-color: #303030;
+      opacity: 0.8;
+      padding: 10px;
+      width: 100%;
+   }
+   ul li.small {
+      display:none;
+   }
+   ul li {
+      list-style-type: none;
+      float: left;
+      width: 50%;
+      text-align: center;
+      font-size: 26px;
+      margin-top: 20px;
+   }
 }

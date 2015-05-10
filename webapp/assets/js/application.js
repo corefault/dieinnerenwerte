@@ -45,11 +45,11 @@ angular.module("watchApp", [])
                      if ($scope.last === false) {
                         data.otrend = "default";
                         data.ptrend = "default";
-                        $scope.last = data;
                      } else {
                         data.otrend = (data.oxygen < $scope.last.oxygen) ? "down" : (data.oxygen > $scope.last.oxygen) ? "up" : "default";
                         data.ptrend = (data.pulse < $scope.last.pulse) ? "down" : (data.pulse > $scope.last.pulse) ? "up" : "default";
                      }
+                     $scope.last = data;
                      $scope.value = data;
                      $scope.update(4000);
                })

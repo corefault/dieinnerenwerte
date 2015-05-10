@@ -2,6 +2,6 @@
  
 for (( ; ; ))
 do
-   raspistill -t 0 -o /var/www/backend/still.jpg -w 640 -h 480 -q 90
+   raspistill -t 0 -o /var/www/backend/still.jpg -w 800 -h 600 -q 80 -ex night
    sleep 4
 done

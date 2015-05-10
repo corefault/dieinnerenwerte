@@ -17,9 +17,9 @@
       <ul ng-controller="valueController">
          <li>{{value.oxygen}} <img src="/assets/media/{{value.otrend}}.png" /><span>oxygen</span></li>
          <li ng-controller="sleepController" class="small">
-            {{value.awake}} <span>awake</span><br/>
-            {{value.sleep}} <span>sleeping</span><br/>
-            {{value.deep}} <span>deep sleep</span>
+            {{value.awake}} <span>awake</span> {{value.p_awake | number:1}} %<br/>
+            {{value.sleep}} <span>sleeping</span> {{value.p_sleep | number:1}} %<br/>
+            {{value.deep}} <span>deep sleep </span>{{value.p_deep | number:1}} %
          </li>
          <li>{{value.pulse}} <img src="/assets/media/{{value.ptrend}}.png" /><span>pulse</span></li>
       </ul>
