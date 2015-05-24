@@ -7,22 +7,18 @@
       <link href="assets/style/watch.css" rel="stylesheet" type="text/css"/>
    </head>
    <body>
-      <header ng-controller="userController">
-         <div class="bg" id="still">
-            <div class="text">
+      <div class="header" ng-controller="userController">
+         <div class="header-background" id="still">
+            <div class="header--text">
                {{user.name}} // {{user.bday}} // {{user.gender}}
             </div>
          </div>
-      </header>
-      <ul ng-controller="valueController">
-         <li>{{value.oxygen}} <img src="/assets/media/{{value.otrend}}.png" /><span>oxygen</span></li>
-         <li ng-controller="sleepController" class="small">
-            {{value.awake}} <span>awake</span> {{value.p_awake | number:1}} %<br/>
-            {{value.sleep}} <span>sleeping</span> {{value.p_sleep | number:1}} %<br/>
-            {{value.deep}} <span>deep sleep </span>{{value.p_deep | number:1}} %
-         </li>
-         <li>{{value.pulse}} <img src="/assets/media/{{value.ptrend}}.png" /><span>pulse</span></li>
-      </ul>
+      </div>
+      
+      <div ng-controller="valueController" class="values">
+         <div class="values--cell">{{value.oxygen}} <img src="/assets/media/{{value.otrend}}.png" /><span class="values--small">oxygen</span></div>
+         <div class="values--cell">{{value.pulse}} <img src="/assets/media/{{value.ptrend}}.png" /><span class="values--small">pulse</span></div>
+      </div>         
       
       <!-- add angular via cdn -->
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.js"></script>

@@ -14,7 +14,7 @@ body {
    font-size:15px;
 }
 
-header {
+.header {
    background-color:#303030;
    position:fixed;
    left:0;
@@ -22,7 +22,8 @@ header {
    width:100%;
    height:calc(100% - 120px);
 }
-header .bg {
+
+.header--background {
    -webkit-background-size: cover;
    -moz-background-size: cover;
    background-size: cover;
@@ -33,7 +34,7 @@ header .bg {
    width:100%;
 }
 
-header .text {
+.header--text {
    position:absolute;
    left:100px;
    top:40px;
@@ -45,66 +46,30 @@ header .text {
    padding:10px;
 }
 
-ul {
+.values {
    width:100%;
    bottom: 0;
    height: 120px;
    position: absolute;
 }
 
-ul li {
-   list-style-type:none;
+.values--cell {
    float:left;
-   width:33%;
+   width:50%;
    text-align:center;
    font-size:48px;
    margin-top:10px;
 }
 
-ul li span {
+.values--small {
+   font-size:20px;
    display:block;
    text-transform: uppercase;
-   color:#646464;
-   font-size:12px;
-}
-
-ul li.small {
-   font-size:16px;
-   font-weight:300;
-}
-
-ul li.small span {
-   display:initial;
-   background-color:#878787;
-   padding:2px 4px;
-   color:#fff;
+   color:#999;
 }
 
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
-
-   header .text {
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 18px;
-      font-weight: 300;
-      color: #fff;
-      background-color: #303030;
-      opacity: 0.8;
-      padding: 10px;
-      width: 100%;
-   }
-   ul li.small {
-      display:none;
-   }
-   ul li {
-      list-style-type: none;
-      float: left;
-      width: 50%;
-      text-align: center;
-      font-size: 26px;
-      margin-top: 20px;
-   }
+      
 }
